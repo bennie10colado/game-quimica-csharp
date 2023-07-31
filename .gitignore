@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
+/Library/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
@@ -72,5 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Ignore all files inside the 'androidnotifications' folder
-/ChemistryLab/Library/PackageCache/com.unity.mobile.notifications@2.2.0/Samples~/NotificationsSamples/Scripts/Android/Plugins/com/unity/androidnotifications/*
+/ChemistryLab/Library/PackageCache/com.unity.mobile.notifications@2.2.0/Samples~/NotificationsSamples/*
+
+/ChemistryLab/Library/PackageCache/com.unity.mobile.notifications@2.2.0/Samples~/NotificationsSamples/TextMesh Pro/*
