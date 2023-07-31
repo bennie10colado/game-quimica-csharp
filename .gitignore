@@ -72,5 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Ignore all files named AndroidNotificationCenterExtensions.java
+# Ignore files named AndroidNotificationCenterExtensions.java and its .meta file
 **/AndroidNotificationCenterExtensions.java
+**/AndroidNotificationCenterExtensions.java.meta
