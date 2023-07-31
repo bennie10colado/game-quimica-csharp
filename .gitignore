@@ -9,7 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/ChemistryLab/Library/PackageCache/com.unity.ide.visualstudio@2.0.18/Editor/AppleEventIntegration~/AppleEventIntegration.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+/ChemistryLab/Library/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -71,7 +71,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-/ChemistryLab/Library/PackageCache/com.unity.mobile.notifications@2.2.0/Samples~/NotificationsSamples/*
-
-/ChemistryLab/Library/PackageCache/com.unity.mobile.notifications@2.2.0/Samples~/NotificationsSamples/TextMesh Pro/*
