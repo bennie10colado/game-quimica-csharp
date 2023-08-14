@@ -38,8 +38,10 @@ public class OutlineObject : MonoBehaviour
         
         if (gameObject.layer == clickEventsLayer)
         {
-            Debug.LogWarning("Clique detectado!!!!!!!!!!!!!");
+            Debug.LogWarning("Clique detectado pelo outline!!!!!!!!!!!!!");
+			
 			//continuar para receber camera lentamente ou entao mudar de cena
+			//SceneManager.LoadScene("NomeDaCenaDoModoDeJogo");
         }
     }
 }

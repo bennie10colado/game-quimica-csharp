@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClickingObject : MonoBehaviour
 {
-    public string targetTag = "ClickEvents";
+    public LayerMask clickEventsLayer;
+	public string sceneName;
     private bool isMouseOverObject = false;
 
     private void Update()
     {
         if (isMouseOverObject && Input.GetMouseButtonDown(0))
         {
-            Debug.LogWarning("Clique detectado no objeto com a tag: " + targetTag);
+            Debug.LogWarning("Clique detectado no objeto com a tag: " + gameObject.tag);
+            SceneManager.LoadScene(sceneName);
         }
     }
 
     private void OnMouseEnter()
     {
-        if (gameObject.CompareTag(targetTag))
+        if (gameObject.CompareTag("ClickEvents"))
         {
             isMouseOverObject = true;
         }
