@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myCam = Camera.main;
+        myCam = Camera.main; 
         agent = GetComponent<NavMeshAgent>();
     }
 
