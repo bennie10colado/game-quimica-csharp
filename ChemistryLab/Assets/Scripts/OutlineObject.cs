@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class OutlineObject : MonoBehaviour
 {
-	private Outline outline;
-    private bool mouseOver = false;
+    private Outline outline;
 
-	private void Start()
+    private void Start()
     {
         outline = GetComponent<Outline>();
         if (outline != null)
@@ -25,22 +24,22 @@ public class OutlineObject : MonoBehaviour
         if (outline != null)
         {
             outline.enabled = true;
-			mouseOver = true;
         }
     }
 
     private void OnMouseExit()
     {
-        mouseOver = false;
         outline.enabled = false;
     }
 
     private void OnMouseDown()
     {
-        if (mouseOver)
+        int clickEventsLayer = LayerMask.NameToLayer("ClickEvents");
+        
+        if (gameObject.layer == clickEventsLayer)
         {
-		//Debug.LogWarning("hello");
-		
+            Debug.LogWarning("Clique detectado!!!!!!!!!!!!!");
+			//continuar para receber camera lentamente ou entao mudar de cena
         }
     }
 }
