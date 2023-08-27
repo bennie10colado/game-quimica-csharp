@@ -12,16 +12,24 @@ public class Player : MonoBehaviour
         score = 0;
     }
 
-    public void InteractWithObject(GameObject obj) {
+    //public void InteractWithObject(GameObject obj) {
         // possivel mudança na interação com objetos?
-    }
+    //}
 
     //public ChemicalCompound Mix(ChemicalCompound substance1, ChemicalCompound substance2) {
         // retorna o resultado da mistura, porém qual deve ser o tipo dos parametros?
     //}
 
     public bool AnswerQuestion(Question question, SubstanceCompound answer) {
-        // deve retornar verdadeiro se a resposta estiver correta, falso caso contrário
+        if (question.GetAnswer() == answer) {
+            UpdateScore(10);
+            Debug.LogWarning("Resposta Correta!");
+            return true;
+        } else
+        {
+            Debug.LogWarning("Resposta Incorreta!");
+            return false;
+        }
     }
 
     public string GetName() {
