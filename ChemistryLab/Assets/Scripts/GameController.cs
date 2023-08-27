@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
 {
     private List<Question> questionList;
     private Player player;
-    private int time;
     public SubstanceSolvent water;
 
     
@@ -15,7 +14,6 @@ public class GameController : MonoBehaviour
     {
         questionList = new List<Question>();
         player = new Player("ben");
-        time = 0;
         Color incolor = new Color(0, 0, 0, 0);
 
         InitializeSolubilities();
@@ -30,7 +28,7 @@ public class GameController : MonoBehaviour
     
     void InitializeQuestions()
     {
-
+        
     }
 
     void StartGame()
@@ -90,10 +88,7 @@ public class GameController : MonoBehaviour
         player.UpdateScore(score);
     }
 
-    void UpdateTime(int seconds)
-    {
-        time += seconds;
-    }
+    //void UpdateTime(int seconds){time += seconds;}
 
     void Update() { }
 

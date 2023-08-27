@@ -211,7 +211,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 345291734}
-  - component: {fileID: 345291733}
+  - component: {fileID: 345291735}
+  - component: {fileID: 345291736}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -219,18 +220,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &345291733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345291732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8324373a3dc61a45bfacccd14802eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &345291734
 Transform:
   m_ObjectHideFlags: 0
@@ -246,6 +235,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &345291735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345291732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fc9322f741ab347b1df59b9dda2b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterObject: {fileID: 1175741903}
+--- !u!114 &345291736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345291732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b2812dbb67c5c43b8b45f71eb2c455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameControllerTwo: {fileID: 345291735}
 --- !u!1001 &663678241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,7 +272,12 @@ PrefabInstance:
     - target: {fileID: 163617556293284183, guid: 0ce7cbb5cae6c0449bd02794ea78317f,
         type: 3}
       propertyPath: m_Name
-      value: Blue
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 163617556293284183, guid: 0ce7cbb5cae6c0449bd02794ea78317f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Water
       objectReference: {fileID: 0}
     - target: {fileID: 652628185167473645, guid: 0ce7cbb5cae6c0449bd02794ea78317f,
         type: 3}
@@ -502,6 +522,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8204406447206829204, guid: 0c837400ef1130c4196d20ee30637d9c,
     type: 3}
   m_PrefabInstance: {fileID: 1112587044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1175741903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 163617556293284183, guid: 0ce7cbb5cae6c0449bd02794ea78317f,
+    type: 3}
+  m_PrefabInstance: {fileID: 663678241}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1180798599
 PrefabInstance:

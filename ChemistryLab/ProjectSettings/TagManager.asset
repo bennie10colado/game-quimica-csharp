@@ -7,6 +7,7 @@ TagManager:
   - Library
   - Navmesh
   - ClickEvents
+  - Water
   layers:
   - Default
   - TransparentFX
