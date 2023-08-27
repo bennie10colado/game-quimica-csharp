@@ -14,8 +14,13 @@ public class ClickingObject : MonoBehaviour
         if (isMouseOverObject && Input.GetMouseButtonDown(0))
         {
             Debug.LogWarning("Clique detectado no objeto com a tag: " + gameObject.tag);
-            SceneManager.LoadScene(sceneName);
+            ChangeScene(sceneName);
         }
+    }
+
+    private void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     private void OnMouseEnter()
