@@ -73,7 +73,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-# Ignore Build And Connect NavMesh Surfaces terrain layer files
-ProjetoQuimica/Assets/Samples/AI Navigation/*/Build And Connect NavMesh Surfaces/Terrains/
-
