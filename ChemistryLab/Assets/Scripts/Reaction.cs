@@ -16,6 +16,8 @@ public class Reaction : MonoBehaviour
     public SubstanceCompound PerformReaction()
     {
         // criacao do novo composto ao verificar a solubilidade e retornar em uma instancia de objeto 3D no cenário
+        //Debug.Log("Hi");
+        return null;
     }
 
     void Start()
