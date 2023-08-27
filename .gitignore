@@ -75,5 +75,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Ignore Build And Connect NavMesh Surfaces terrain layer files
-ProjetoQuimica/Assets/Samples/AI Navigation/*/Build And Connect NavMesh Surfaces/Terrains/*.terrainlayer
+ProjetoQuimica/Assets/Samples/AI Navigation/*/Build And Connect NavMesh Surfaces/Terrains/
 
