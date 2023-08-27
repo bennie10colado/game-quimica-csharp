@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Question : MonoBehaviour
+public class Question
 {
     private int id;
     private string description;
@@ -15,7 +15,13 @@ public class Question : MonoBehaviour
         this.feedback = feedback;
         this.answer = answer;
     }
-
+    
+    public void UpdateQuestion(Question updatedQuestion) {
+        this.description = updatedQuestion.description;
+        this.feedback = updatedQuestion.feedback;
+        this.answer = updatedQuestion.answer;
+    }
+    
     public int GetId() {
         return id;
     }

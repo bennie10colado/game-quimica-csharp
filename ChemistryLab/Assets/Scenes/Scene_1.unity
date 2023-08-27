@@ -4140,7 +4140,7 @@ MonoBehaviour:
   clickEventsLayer:
     serializedVersion: 2
     m_Bits: 64
-  sceneName: DungeonLow
+  sceneName: Scene_2
 --- !u!1001 &1397639579
 PrefabInstance:
   m_ObjectHideFlags: 0

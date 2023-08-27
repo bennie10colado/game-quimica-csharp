@@ -13,14 +13,5 @@ public class SubstanceCompound : ChemicalCompound
     {
         return solvent.IsSoluble(this);
     }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    
 }

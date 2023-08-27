@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
-    private string name;
+    private string playerName;
     private int score;
 
     public Player(string playerName) {
-        name = playerName;
+        this.playerName = playerName;
         score = 0;
     }
 
@@ -32,24 +32,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    public string GetName() {
-        return name;
+    public string GetPlayerName() {
+        return playerName;
     }
 
     public int GetScore() {
-        return score;
+        return score;   
     }
 
     public void UpdateScore(int points) {
         score += points;
-    }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 }

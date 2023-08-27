@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reaction : MonoBehaviour
+public class Reaction
 {
     private SubstanceCompound compound;
     private SubstanceSolvent solvent;
@@ -15,17 +15,22 @@ public class Reaction : MonoBehaviour
 
     public SubstanceCompound PerformReaction()
     {
-        // criacao do novo composto ao verificar a solubilidade e retornar em uma instancia de objeto 3D no cenário
-        //Debug.Log("Hi");
-        return null;
+        // verifica solubilidade e densidade
+        if (compound.IsSoluble(solvent) && DensitySolution(compound, solvent))
+        {
+            return new SubstanceCompound("Resultado da Reação", Color.white, PhysicalState.LIQUID, 1.0f);
+        }
+        else
+        {
+            // por enquanto se nao for soluvel retorna null, posteriormente retornar novas substancias que nao sao solúveis e com diferenças de fases ou corpo sólido
+            return null;
+        }
     }
 
-    void Start()
+    private bool DensitySolution(SubstanceCompound compound, SubstanceSolvent solvent)
     {
-        
-    }
-    void Update()
-    {
-        
+        return true; //compound.GetDensity() > solvent.GetDensity(); 
+
+        //se a densidade de compound for maior do que a do solvente retornar true, caso for menor retornar false e o solvente "boia"
     }
 }
