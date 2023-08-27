@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Reaction : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private SubstanceCompound compound;
+    private SubstanceSolvent solvent;
+
+    public Reaction(SubstanceCompound compound, SubstanceSolvent solvent)
+    {
+        this.compound = compound;
+        this.solvent = solvent;
+    }
+
+    public SubstanceCompound PerformReaction()
+    {
+        // criacao do novo composto ao verificar a solubilidade e retornar em uma instancia de objeto 3D no cenário
+    }
+
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
