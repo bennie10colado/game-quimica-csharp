@@ -4,55 +4,39 @@ using UnityEngine;
 
 public class GameControllerTwo : MonoBehaviour
 {
-    public enum SolubilityResult
-    {
-        Soluble,
-        InsolubleHighDensity,
-        InsolubleLowDensity
-    }
-    
+    [SerializeField] private GameObject waterObject;
+    [SerializeField] private GameObject etanoatoObject;
+
     private SubstanceSolvent aguaDestilada;
-    [SerializeField] private GameObject waterObject; 
+    private SubstanceCompound etanoato;
 
     private void Start()
     {
         aguaDestilada = waterObject.GetComponent<SubstanceSolvent>();
-    
+
         if (aguaDestilada == null)
         {
             Debug.LogError("Componente SubstanceSolvent não encontrado no objeto da água destilada!");
-            return;
         }
 
-        SubstanceCompound etanoato = new SubstanceCompound("Etanoato de Etila", Color.yellow, PhysicalState.LIQUID, 0.9f);
-        SubstanceCompound butanoato = new SubstanceCompound("Butanoato de Sódio", Color.green, PhysicalState.SOLID, 1.2f);
+        etanoato = etanoatoObject.GetComponent<SubstanceCompound>();
+
+        if (etanoato == null)
+        {
+            Debug.LogError("Componente SubstanceCompound não encontrado no objeto do etanoato!");
+        }
 
         aguaDestilada.SetSolubility(etanoato, true);
-        aguaDestilada.SetSolubility(butanoato, true);
 
-        SolubilityResult resultEtanoato = CheckSolubility(aguaDestilada, etanoato);
-        SolubilityResult resultButanoato = CheckSolubility(aguaDestilada, butanoato);
+        bool isEtanoatoSoluble = aguaDestilada.IsSoluble(etanoato);
 
-        Debug.Log("Etanoato: " + resultEtanoato);
-        Debug.Log("Butanoato: " + resultButanoato);
-    }
-
-    private SolubilityResult CheckSolubility(SubstanceSolvent solvent, SubstanceCompound compound)
-    {
-        if (solvent.IsSoluble(compound))
+        if (isEtanoatoSoluble)
         {
-            if (compound.GetDensity() > solvent.GetDensity())
-            {
-                return SolubilityResult.InsolubleHighDensity; // I↑
-            }
-            else
-            {
-                return SolubilityResult.Soluble; // S
-            }
+            Debug.Log("O etanoato é solúvel na água.");
         }
         else
         {
-            return SolubilityResult.InsolubleLowDensity; // I↓
+            Debug.Log("O etanoato não é solúvel na água.");
         }
     }
 }

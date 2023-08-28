@@ -16,9 +16,9 @@ public class Reaction
     public SubstanceCompound PerformReaction()
     {
         // verifica solubilidade e densidade
-        if (compound.IsSoluble(solvent) && DensitySolution(compound, solvent))
+        if (solvent.IsSoluble(compound) && DensitySolution(compound, solvent))
         {
-            return new SubstanceCompound("Resultado da Reação", Color.white, PhysicalState.LIQUID, 1.0f);
+            return null; // new SubstanceCompound("Resultado da Reação", Color.white, PhysicalState.LIQUID, 1.0f);
         }
         else
         {

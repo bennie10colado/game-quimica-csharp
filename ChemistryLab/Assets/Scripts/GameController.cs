@@ -7,8 +7,6 @@ public class GameController : MonoBehaviour
 {
     private List<Question> questionList;
     private Player player;
-    public SubstanceSolvent water;
-
     
     void Start()
     {
@@ -77,10 +75,11 @@ public class GameController : MonoBehaviour
         return currentQuestion.GetAnswer() == answer;
     }
 
-    SubstanceCompound MixSubstances(SubstanceCompound substance1, SubstanceSolvent solvent)
+    SubstanceCompound MixSubstances(SubstanceCompound compound, SubstanceSolvent solvent)
     {
-        Reaction reaction = new Reaction(substance1, solvent);
-        return reaction.PerformReaction();
+        //Reaction reaction = new Reaction(compound, solvent);
+        //return reaction.PerformReaction();
+		return null;
     }
 
     void UpdateScore(int score)

@@ -1,41 +1,58 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SubstanceSolvent : ChemicalCompound
+public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
 {
-    private Dictionary<SubstanceCompound, bool> solubilityList;
+    [SerializeField] private string compoundName;
+    [SerializeField] private Color color;
+    [SerializeField] private PhysicalState state;
+    [SerializeField] private float density;
 
-    public SubstanceSolvent(string name, Color color, PhysicalState state, float density)
-        : base(name, color, state, density)
+    private Dictionary<SubstanceCompound, bool> solubilityTable;
+
+    private void Awake()
     {
-        solubilityList = new Dictionary<SubstanceCompound, bool>();
+        solubilityTable = new Dictionary<SubstanceCompound, bool>();
     }
 
-    public void AddCompoundToList(SubstanceCompound compound, bool isSoluble) 
+    public void SetSolubility(SubstanceCompound compound, bool isSoluble)
     {
-        solubilityList.Add(compound, isSoluble);
+        if (solubilityTable.ContainsKey(compound))
+        {
+            solubilityTable[compound] = isSoluble; 
+        }
+        else
+        {
+            solubilityTable.Add(compound, isSoluble); 
+        }
     }
 
     public bool IsSoluble(SubstanceCompound compound)
     {
-        if (solubilityList.ContainsKey(compound))
+        if (solubilityTable.ContainsKey(compound))
         {
-            return solubilityList[compound];
+            return solubilityTable[compound];
         }
-        return false;
+        return false; 
     }
-    
-    public void SetSolubility(SubstanceCompound compound, bool isSoluble)
+
+    public string GetCompoundName()
     {
-        if (solubilityList.ContainsKey(compound)) 
-        {
-            // se o composto já existir na lista, o atualiza
-            solubilityList[compound] = isSoluble;
-        }
-        else
-        {
-            AddCompoundToList(compound, isSoluble);
-        }
+        return compoundName;
+    }
+
+    public Color GetColor()
+    {
+        return color;
+    }
+
+    public PhysicalState GetState()
+    {
+        return state;
+    }
+
+    public float GetDensity()
+    {
+        return density;
     }
 }
