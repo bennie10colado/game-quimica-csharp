@@ -7,6 +7,15 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
     [SerializeField] private PhysicalState state;
     [SerializeField] private float density;
 
+  	//construtor pois não estava sendo possivel instanciar o objeto SubstanceCompound na Reaction 
+	public SubstanceCompound(string compoundName, Color color, PhysicalState state, float density)
+    {
+        this.compoundName = compoundName;
+        this.color = color;
+        this.state = state;
+        this.density = density;
+    }	
+	
     public string GetCompoundName()
     {
         return compoundName;
@@ -27,7 +36,5 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
         return density;
     }
 	
-	public bool IsSoluble(SubstanceCompound compound){
-		return true;
-	}
+	//obs: pode-se criar no futuro um método para analisar a solubilidade do composto com um solvente, ou com outros compostos. Semelhante ao IsSoluble
 }

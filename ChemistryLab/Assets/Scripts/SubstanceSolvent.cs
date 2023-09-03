@@ -9,6 +9,14 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
     [SerializeField] private float density;
 
     private Dictionary<SubstanceCompound, bool> solubilityTable;
+	
+	public SubstanceSolvent(string compoundName, Color color, PhysicalState state, float density)
+    {
+        this.compoundName = compoundName;
+        this.color = color;
+        this.state = state;
+        this.density = density;
+    }	
 
     private void Awake()
     {

@@ -4,64 +4,57 @@ using UnityEngine;
 
 public class GameControllerTwo : MonoBehaviour
 {
-    [SerializeField] private GameObject waterObject;
-    [SerializeField] private GameObject eterObject;
-
-    [SerializeField] private GameObject etanoatoObject;
+    [SerializeField] private GameObject waterObject; //utilizado
+    [SerializeField] private GameObject eterObject; //utilizado
+    
+	[SerializeField] private GameObject etanoatoObject; //utilizado
     [SerializeField] private GameObject propanoicAcidObject;
     [SerializeField] private GameObject butanaminaObject;
-
-    private SubstanceSolvent distilledWater;
+    [SerializeField] private GameObject butanoatoSodiumObject; //utilizado
+   
+	private SubstanceSolvent distilledWater;
     private SubstanceSolvent eterDietilico;
 
     private SubstanceCompound etanoato;
     private SubstanceCompound propanoicAcid;
     private SubstanceCompound butanamina;
+	private SubstanceCompound butanoatoSodium;
 
     private void Start()
     {
         distilledWater = waterObject.GetComponent<SubstanceSolvent>();
         eterDietilico = eterObject.GetComponent<SubstanceSolvent>();
 
-        if (distilledWater == null || eterDietilico == null)
-        {
-            Debug.LogError("Componente de 'SubstanceSolvent' não foi encontrado em algum dos objetos!");
-            return;
-        }
-
         etanoato = etanoatoObject.GetComponent<SubstanceCompound>();
-        propanoicAcid = propanoicAcidObject.GetComponent<SubstanceCompound>();
-        butanamina = butanaminaObject.GetComponent<SubstanceCompound>();
+		butanoatoSodium = butanoatoSodiumObject.GetComponent<SubstanceCompound>();
 
-
-		if (etanoato == null || propanoicAcid == null || butanamina == null)
+        if (distilledWater == null || etanoato == null || butanoatoSodium == null || eterDietilico == null)
         {
-            Debug.LogError("Componente de 'SubstanceCompound' não encontrado em algum dos objetos!");
+            Debug.LogError("Componente não encontrado em algum dos objetos!");
             return;
         }
 
+	    //marcando solubilidadade dos solventes com os compostos organicos
         distilledWater.SetSolubility(etanoato, true);
-        distilledWater.SetSolubility(propanoicAcid, true);
-        distilledWater.SetSolubility(butanamina, true);
+        distilledWater.SetSolubility(butanoatoSodium, true);
 
-        eterDietilico.SetSolubility(etanoato, true);
-        eterDietilico.SetSolubility(propanoicAcid, true);
-        eterDietilico.SetSolubility(butanamina, true);
+		eterDietilico.SetSolubility(etanoato, true);
+		eterDietilico.SetSolubility(butanoatoSodium, false);
 
-        bool isEtanoatoSolubleInWater = distilledWater.IsSoluble(etanoato);
-        bool isPropanoicAcidSolubleInWater = distilledWater.IsSoluble(propanoicAcid);
-        bool isButanaminaSolubleInWater = distilledWater.IsSoluble(butanamina);
+		//reacao entre o composto e solvente
+        Reaction reaction_between_water_etanoato = new Reaction(etanoato, distilledWater);
+        SubstanceCompound reactionProduct = reaction_between_water_etanoato.PerformReaction();
 
-        bool isEtanoatoSolubleInEter = eterDietilico.IsSoluble(etanoato);
-        bool isPropanoicAcidSolubleInEter = eterDietilico.IsSoluble(propanoicAcid);
-        bool isButanaminaSolubleInEter = eterDietilico.IsSoluble(butanamina);
+        Reaction reaction_between_eter_butanoatoSodium = new Reaction(butanoatoSodium, eterDietilico);
+        SubstanceCompound reactionProduct2 = reaction_between_eter_butanoatoSodium.PerformReaction();
 
-        Debug.Log("Etanoato é solúvel em água: " + isEtanoatoSolubleInWater);
-        Debug.Log("Ácido propanoico é solúvel em água: " + isPropanoicAcidSolubleInWater);
-        Debug.Log("Butan-1-amina é solúvel em água: " + isButanaminaSolubleInWater);
-
-        Debug.Log("Etanoato é solúvel em éter: " + isEtanoatoSolubleInEter);
-        Debug.Log("Ácido propanoico é solúvel em éter: " + isPropanoicAcidSolubleInEter);
-        Debug.Log("Butan-1-amina é solúvel em éter: " + isButanaminaSolubleInEter);
+        //reactionProduct != null não funcionava, e por algum motivo mesmo o objeto totalmente preenchido com seus valores, ele entrava no if de == null
+        if (reactionProduct.GetCompoundName() != null && reactionProduct2.GetCompoundName() != null)
+        {
+		Debug.Log("Produto da reação 1: " + reactionProduct.GetCompoundName());
+		Debug.Log("Produto da reação 2: " + reactionProduct2.GetCompoundName());
+		}else if (reactionProduct == null){
+   		Debug.Log("Reação não ocorreu");
+		}
     }
 }

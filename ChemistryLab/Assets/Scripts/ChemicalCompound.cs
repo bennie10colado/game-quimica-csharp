@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChemicalCompound
+public class ChemicalCompound : MonoBehaviour
 {
     private string compoundName;
     private Color color;
