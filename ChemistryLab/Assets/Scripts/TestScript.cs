@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    public GameControllerTwo gameControllerTwo;
+    public GameController gameController;
 
     void Start()
     {
-        gameControllerTwo = GetComponent<GameControllerTwo>();
-
+        gameController = GetComponent<GameController>();
     }
 }

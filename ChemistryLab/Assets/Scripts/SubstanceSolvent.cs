@@ -3,35 +3,52 @@ using UnityEngine;
 
 public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
 {
-    [SerializeField] private string compoundName;
-    [SerializeField] private Color color;
-    [SerializeField] private PhysicalState state;
-    [SerializeField] private float density;
-
+    private string compoundName;
+    private Color color;
+    private PhysicalState state;
+    private float density;
+    private string groupName;
     private Dictionary<SubstanceCompound, bool> solubilityTable;
-	
-	public SubstanceSolvent(string compoundName, Color color, PhysicalState state, float density)
+
+    public SubstanceSolvent(string compoundName, Color color, PhysicalState state, float density, string groupName)
     {
         this.compoundName = compoundName;
         this.color = color;
         this.state = state;
         this.density = density;
-    }	
+        this.groupName = groupName;
+    }
+
+    //testes para ler o JSON
+
+    //public void LoadSolubilityData(string json) {
+    //SolubilityData data = JsonUtility.FromJson<SolubilityData>(json);
+    // converter solubilityTable em data
+    //}
+
+    //public string SaveSolubilityData() {
+    //SolubilityData data = new SolubilityData();
+    // converter solubilityTable para data
+    //return JsonUtility.ToJson(data);
+    //}
 
     private void Awake()
     {
         solubilityTable = new Dictionary<SubstanceCompound, bool>();
+
+        //LoadData();
     }
+
 
     public void SetSolubility(SubstanceCompound compound, bool isSoluble)
     {
         if (solubilityTable.ContainsKey(compound))
         {
-            solubilityTable[compound] = isSoluble; 
+            solubilityTable[compound] = isSoluble;
         }
         else
         {
-            solubilityTable.Add(compound, isSoluble); 
+            solubilityTable.Add(compound, isSoluble);
         }
     }
 
@@ -41,7 +58,7 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
         {
             return solubilityTable[compound];
         }
-        return false; 
+        return false;
     }
 
     public string GetCompoundName()

@@ -1,0 +1,27 @@
+{
+    "compounds": [
+        {
+          "compoundName": "Etanoato de etila",
+          "solubility": {
+            "water": true,
+            "eter": false
+          },
+          "groupName": "S1",
+          "physicalState": "LIQUID",
+          "density": 0.9,
+          "color": "#FFFFFF"
+        },
+        {
+          "compoundName": "Butanoato de sodio",
+          "solubility": {
+            "water": true,
+            "eter": false
+          },
+          "groupName": "S2",
+          "physicalState": "SOLID",
+          "density": 1.2,
+          "color": "#FFFFFF"
+        }
+      ]
+  }
+  

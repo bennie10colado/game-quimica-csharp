@@ -28,7 +28,7 @@ public class Reaction
 		}
 		
 		//produto resultado predefinido que será retornado, e posteriormente pode se tornar um gameobject instanciado no cenario	
-        SubstanceCompound reactionProduct = new SubstanceCompound(compound.GetCompoundName(), Color.white, PhysicalState.LIQUID, 0.8f);
+        SubstanceCompound reactionProduct = new SubstanceCompound(compound.GetCompoundName(), Color.white, PhysicalState.LIQUID, 0.8f, "S1");
         
         //Debug.Log("Reação ocorreu, composto e solvente são solúveis! Produto da reação é o: " + reactionProduct.GetCompoundName());
 

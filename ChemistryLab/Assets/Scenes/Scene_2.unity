@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &345291734
 Transform:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b2812dbb67c5c43b8b45f71eb2c455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameControllerTwo: {fileID: 345291735}
+  gameController: {fileID: 0}
 --- !u!1001 &437746400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,10 +382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08f8e90b6594a14e8f0c617dcb38163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compoundName: Butan-1-amina
-  color: {r: 0, g: 0.08536577, b: 1, a: 0}
-  state: 1
-  density: 1
 --- !u!1 &536131658
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,10 +704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153a798c0f9672248aca8a9d571d923f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compoundName: "\xC9ter diet\xEDlico"
-  color: {r: 1, g: 1, b: 1, a: 0}
-  state: 1
-  density: 1
 --- !u!1 &1016246872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 163617556293284183, guid: 0ce7cbb5cae6c0449bd02794ea78317f,
@@ -821,6 +813,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1112587044}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1175695025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175695027}
+  - component: {fileID: 1175695026}
+  m_Layer: 0
+  m_Name: SubstanceController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1175695026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175695025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7b0f324cb657842aca36b5250758a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFilePath: Assets/Resources/SolubilityData.json
+--- !u!4 &1175695027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175695025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.486618, y: 0.78842515, z: 1.8503104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175741903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 163617556293284183, guid: 0ce7cbb5cae6c0449bd02794ea78317f,
@@ -839,10 +876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153a798c0f9672248aca8a9d571d923f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compoundName: 'Distilled Water '
-  color: {r: 0.16078432, g: 0.227451, b: 0.9450981, a: 0}
-  state: 1
-  density: 1
 --- !u!1001 &1180798599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -943,10 +976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08f8e90b6594a14e8f0c617dcb38163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compoundName: "\xC1cido propanoico"
-  color: {r: 1, g: 0, b: 0.04651165, a: 0}
-  state: 1
-  density: 1.1
 --- !u!1 &1275988009 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2161485195221811931, guid: 26b95fa21dfcfeb4fb4aea448e8d05c3,
@@ -965,10 +994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08f8e90b6594a14e8f0c617dcb38163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compoundName: "Butanoato de s\xF3dio"
-  color: {r: 1, g: 1, b: 1, a: 0}
-  state: 0
-  density: 5
 --- !u!1 &1314300259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,10 +1104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08f8e90b6594a14e8f0c617dcb38163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  compoundName: Etanoato de etila
-  color: {r: 1, g: 1, b: 1, a: 0}
-  state: 1
-  density: 1.2
 --- !u!1 &1655471345
 GameObject:
   m_ObjectHideFlags: 0
