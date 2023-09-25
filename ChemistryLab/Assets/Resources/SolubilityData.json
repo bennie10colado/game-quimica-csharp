@@ -5,7 +5,7 @@
       "solventId": 1,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em Água",
-      "color": "#FFFFFF",
+      "color": "#FFFFF1",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -15,7 +15,7 @@
       "solventId": 2,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em Éter dietílico",
-      "color": "#FFFFFF",
+      "color": "#FFFFF2",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -25,7 +25,7 @@
       "solventId": 3,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em Tornassol",
-      "color": "#FFFFFF",
+      "color": "#FFFFF3",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Incolor"
@@ -35,7 +35,7 @@
       "solventId": 4,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em NaOH 5%",
-      "color": "#FFFFFF",
+      "color": "#FFFFF4",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -45,7 +45,7 @@
       "solventId": 5,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em NaHCO3 5%",
-      "color": "#FFFFFF",
+      "color": "#FFFFF5",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -55,7 +55,7 @@
       "solventId": 6,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em HCl 5%",
-      "color": "#FFFFFF",
+      "color": "#FFFFF6",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -65,7 +65,7 @@
       "solventId": 7,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em H2SO4 96%",
-      "color": "#FFFFFF",
+      "color": "#FFFFF7",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -75,7 +75,7 @@
       "solventId": 8,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em H3PO4 85%",
-      "color": "#FFFFFF",
+      "color": "#FFFFF8",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -85,7 +85,7 @@
       "solventId": 1,
       "compoundId": 2,
       "solutionName": "Solução de Butanoato de sódio em Água",
-      "color": "#FFFFFF",
+      "color": "#FFFFF990",
       "state": "SOLID",
       "density": 1.055,
       "solubilityResult": "Soluble"

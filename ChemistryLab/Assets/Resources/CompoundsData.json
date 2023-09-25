@@ -2,7 +2,7 @@
 	"compounds": [{
 			"id": 1,
 			"compoundName": "Etanoato de etila",
-			"color": "#FF0000",
+			"color": "#FF00FF",
 			"state": "LIQUID",
 			"groupName": "S1",
 			"density": 0.9
@@ -10,7 +10,7 @@
 		{
 			"id": 2,
 			"compoundName": "Butanoato de sódio",
-			"color": "#00FF00",
+			"color": "#00FFFF",
 			"state": "SOLID",
 			"groupName": "S2",
 			"density": 1.1
@@ -18,7 +18,7 @@
 		{
 			"id": 3,
 			"compoundName": "Ácido propanoico",
-			"color": "#FF0000",
+			"color": "#FF0FFF",
 			"state": "LIQUID",
 			"groupName": "SA",
 			"density": 1.05
