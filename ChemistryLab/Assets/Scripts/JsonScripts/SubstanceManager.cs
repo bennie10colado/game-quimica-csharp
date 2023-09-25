@@ -9,41 +9,64 @@ public class CompoundsCollection
     public List<CompoundData> compounds;
 }
 
+[System.Serializable]
+public class SolventsCollection
+{
+    public List<SolventData> solvents;
+}
+
 public class SubstanceManager : MonoBehaviour
 {
-    public string jsonFilePath = "Assets/Resources/SolubilityData.json";
+    public string compoundsJsonFilePath = "Assets/Resources/SolubilityData.json";
+    public string solventsJsonFilePath = "Assets/Resources/SolventsData.json";
 
-    private List<SubstanceCompound> substanceCompounds = new List<SubstanceCompound>();
     private Dictionary<string, SubstanceSolvent> solvents = new Dictionary<string, SubstanceSolvent>();
+    private List<SubstanceCompound> substanceCompounds = new List<SubstanceCompound>();
 
     void Start()
     {
+        LoadSolvents();
         LoadChemicalData();
         PrintCompoundList();
     }
+    void LoadSolvents()
+    {
+        string jsonText = File.ReadAllText(solventsJsonFilePath);
+        SolventsCollection solventsCollection = JsonUtility.FromJson<SolventsCollection>(jsonText);
+
+        foreach (var solventData in solventsCollection.solvents)
+        {
+            SubstanceSolvent newSolvent = new SubstanceSolvent(
+                solventData.name,
+                solventData.color,
+                solventData.state,
+                solventData.density
+            );
+        
+            solvents[solventData.name] = newSolvent;
+        }
+    }
+
 
     void LoadChemicalData()
     {
-        string jsonText = File.ReadAllText(jsonFilePath);
+        string jsonText = File.ReadAllText(compoundsJsonFilePath);
+
+        Debug.Log(jsonText);
+
         CompoundsCollection dataRoot = JsonUtility.FromJson<CompoundsCollection>(jsonText);
 
-        if (dataRoot?.compounds == null)
+        if (dataRoot.compounds == null)
         {
-            Debug.LogError("dataRoot é null ou dataRoot.compounds é null.");
+            Debug.Log("dataRoot é null ou dataRoot.compounds é null.");
             return;
         }
 
         foreach (CompoundData data in dataRoot.compounds)
         {
-            if (data == null)
-            {
-                Debug.LogError("data é null.");
-                continue;
-            }
-
             if (data.solubility == null)
             {
-                Debug.LogError($"data.solubility é null para o composto {data.compoundName}.");
+                Debug.Log($"data.solubility é null para o composto {data.compoundName}.");
                 continue;
             }
 
@@ -51,21 +74,24 @@ public class SubstanceManager : MonoBehaviour
 
             foreach (var entry in data.solubility)
             {
-                if (string.IsNullOrEmpty(entry.Key) || string.IsNullOrEmpty(entry.Value))
+                if (string.IsNullOrEmpty(entry.solvent) || string.IsNullOrEmpty(entry.value))
                 {
-                    Debug.LogError("entry.Key ou entry.Value é null ou vazio.");
+                    Debug.Log($"entry.solvent ou entry.value é null ou vazio para o composto {data.compoundName}.");
                     continue;
                 }
 
-                SubstanceSolvent solvent = GetSolventByName(entry.Key);
+                SubstanceSolvent solvent = GetSolventByName(entry.solvent);
                 if (solvent == null)
                 {
-                    Debug.LogError($"Solvente {entry.Key} retornou null.");
+                    Debug.Log($"Solvente {entry.solvent} retornou null para o composto {data.compoundName}.");
                     continue;
                 }
 
-                solubilityTable[solvent] = entry.Value;
-                solvents[entry.Key] = solvent;
+                solubilityTable[solvent] = entry.value;
+                if (!solvents.ContainsKey(entry.solvent))
+                {
+                    solvents[entry.solvent] = solvent;
+                }
             }
 
             PhysicalState state;
@@ -93,8 +119,7 @@ public class SubstanceManager : MonoBehaviour
             substanceCompounds.Add(newCompound);
         }
     }
-
-
+    
     public SubstanceSolvent GetSolventByName(string solventName)
     {
         if (solvents.TryGetValue(solventName, out var solvent))

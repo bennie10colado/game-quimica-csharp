@@ -5,7 +5,7 @@ public enum SolubilityResults
     Soluble,
     InsolubleAbove,
     InsolubleBelow,
-    Inc,
+    Incolor,
     A,
     V
 }

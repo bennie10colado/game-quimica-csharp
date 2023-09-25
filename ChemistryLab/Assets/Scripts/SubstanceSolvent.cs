@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
 {
+    private int idSolvent;
     private string compoundName;
     private Color color;
     private PhysicalState state;
     private GroupName groupName;
     private float density;
 
-    public SubstanceSolvent(string compoundName, Color color, PhysicalState state, float density)
+    public SubstanceSolvent(int id, string compoundName, Color color, PhysicalState state, float density)
     {
+        this.idSolvent = id;
         this.compoundName = compoundName;
         this.color = color;
         this.state = state;

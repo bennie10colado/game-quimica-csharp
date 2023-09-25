@@ -10,7 +10,5 @@ public class CompoundData
     public string physicalState;
     public Color color;
     public float density;
-    public Dictionary<string, string> solubility;
+    public List<SolubilityData> solubility;
 }
-
-

@@ -1,0 +1,13 @@
+{
+    "compounds": [
+      {
+        "id": 1,
+        "compoundName": "Etanoato de Etila",
+        "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+        "state": "LIQUID",
+        "groupName": "S1",
+        "density": 0.902
+      }
+    ]
+  }
+  

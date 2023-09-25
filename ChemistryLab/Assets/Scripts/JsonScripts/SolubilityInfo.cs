@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class SolubilityInfo
 {
-    public Dictionary<string, bool> solvents = new Dictionary<string, bool>();
+    public Dictionary<string, bool> solvents2 = new Dictionary<string, bool>();
 }
 

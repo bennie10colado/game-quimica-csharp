@@ -1,0 +1,53 @@
+{
+    "solvents": [
+      {
+        "name": "Água",
+        "color": "#00000000",
+        "state": "LIQUID",
+        "density": 1.0
+      },
+      {
+        "name": "Éter dietílico",
+        "color": "#00000000",
+        "state": "LIQUID",
+        "density": 0.713
+      },
+      {
+        "name": "Tornassol",
+        "color": "#00000000",
+        "state": "SOLID",
+        "density": 1.2
+      },
+      {
+        "name": "NaOH 5%",
+        "color": "#00000000",
+        "state": "LIQUID",
+        "density": 1.1
+      },
+      {
+        "name": "NaHCO3 5%",
+        "color": "#00000000",
+        "state": "LIQUID",
+        "density": 1.01
+      },
+      {
+        "name": "HCl 5%",
+        "color": "#00000000",
+        "state": "LIQUID",
+        "density": 1.02
+      },
+      {
+        "name": "H2SO4 96%",
+        "color": "#00000000",
+        "state": "LIQUID",
+        "density": 1.84
+      },
+      {
+        "name": "H3PO4 85%",
+        "color": "#00000000",
+        "state": "LIQUID",
+        "density": 1.685
+      }
+    ]
+  }
+  
