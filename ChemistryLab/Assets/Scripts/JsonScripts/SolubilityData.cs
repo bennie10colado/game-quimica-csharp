@@ -5,6 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class SolubilityData
 {
-    public string solvent;
-    public string value;
+    public int id;
+    public int solventId;
+    public int compoundId;
+    public string solutionName;
+    public string color;
+    public string state;
+    public float density;
+    public string solubilityResult;
 }

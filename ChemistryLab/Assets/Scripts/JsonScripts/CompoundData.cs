@@ -5,10 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class CompoundData
 {
+    public int id;
     public string compoundName;
-    public string groupName;
-    public string physicalState;
     public Color color;
+    public string physicalState;
+    public string groupName;
     public float density;
-    public List<SolubilityData> solubility;
 }

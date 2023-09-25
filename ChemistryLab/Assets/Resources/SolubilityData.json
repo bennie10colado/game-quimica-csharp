@@ -1,21 +1,23 @@
-[{
-  "id": 1,
-  "solventId": 1,
-  "compoundId": 1,
-  "sampleName": "Solução de Etanoato de etila em Água",
-  "color": "#FFFFFF",
-  "state": "LIQUID",
-  "density": 0.95,
-  "solubilityResult": "Soluble"
-},
 {
-  "id": 2,
-  "solventId": 2,
-  "compoundId": 2,
-  "sampleName": "Solução de Butanoato de sódio em Éter dietílico",
-  "color": "#FFFFFF",
-  "state": "LIQUID",
-  "density": 0.9,
-  "solubilityResult": "InsolubleBelow"
+	"solutions": [{
+			"id": 1,
+			"solventId": 1,
+			"compoundId": 1,
+			"solutionName": "Solução de Etanoato de etila em Água",
+			"color": "#FFFFFF",
+			"state": "LIQUID",
+			"density": 0.95,
+			"solubilityResult": "Soluble"
+		},
+		{
+			"id": 2,
+			"solventId": 2,
+			"compoundId": 2,
+			"solutionName": "Solução de Butanoato de sódio em Éter dietílico",
+			"color": "#FFFFFF",
+			"state": "LIQUID",
+			"density": 0.9,
+			"solubilityResult": "InsolubleBelow"
+		}
+	]
 }
-]
