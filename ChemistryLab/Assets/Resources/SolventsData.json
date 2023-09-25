@@ -2,14 +2,14 @@
 	"solvents": [{
 			"id": 1,
 			"compoundName": "Água",
-			"color": "#FFFFFF",
+			"color": "#00FF",
 			"state": "LIQUID",
 			"density": 1.0
 		},
 		{
 			"id": 2,
 			"compoundName": "Éter dietílico",
-			"color": "#FFFFFF",
+			"color": "#AAFFFF",
 			"state": "LIQUID",
 			"density": 0.7
 		}, {

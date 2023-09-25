@@ -35,24 +35,25 @@ public class SubstanceManager : MonoBehaviour
     public List<SubstanceCompound> compoundsList = new List<SubstanceCompound>();
     public List<SubstanceSolution> solutionsList = new List<SubstanceSolution>();
 
-    void Start()
+    void Awake()
     {
         LoadSolvents();
         LoadCompounds();
         LoadSolubility();
-
     }
 
     void LoadSolvents()
     {
         string jsonTextSol = File.ReadAllText(solventsJsonFilePath);
         solventsCollection = JsonUtility.FromJson<SolventsCollection>(jsonTextSol);
+        
         foreach (var solventData in solventsCollection.solvents)
         {
             SubstanceSolvent solvent = ConvertDataToSubstanceSolvent(solventData);
             solventsList.Add(solvent);
         }
-
+        
+        //print de cada elemento da lista
         foreach (var solvent in solventsList)
         {
             if (!solvent) //por algum motivo um objeto completo é tratado como nulo nessa verificacao
@@ -67,11 +68,13 @@ public class SubstanceManager : MonoBehaviour
     {
         string jsonTextComp = File.ReadAllText(compoundsJsonFilePath);
         compoundsCollection = JsonUtility.FromJson<CompoundsCollection>(jsonTextComp);
+        
         foreach (var compoundData in compoundsCollection.compounds)
         {
             SubstanceCompound compound = ConvertDataToSubstanceCompound(compoundData);
             compoundsList.Add(compound);
         }
+
         foreach (var compound in compoundsList)
         {
             if (!compound)
@@ -85,6 +88,7 @@ public class SubstanceManager : MonoBehaviour
     {
         string jsonTextSolub = File.ReadAllText(solutionsJsonFilePath);
         solutionsCollection = JsonUtility.FromJson<SolutionsCollection>(jsonTextSolub);
+        
         foreach (var solubilityData in solutionsCollection.solutions)
         {
             SubstanceSolution solution = ConvertDataToSubstanceSolution(solubilityData);
@@ -93,8 +97,7 @@ public class SubstanceManager : MonoBehaviour
 
         foreach (var sol in solutionsList)
         {
-            Debug.Log("Solução: " + sol.GetSolutionName() + " " + "Id: " + sol.GetId() + ", Densidade: " + sol.GetDensity() + ", Cor: " + sol.GetColor() + ", Estado físico: " + sol.GetState() + ", Nome do solvente que está presente na reação: " + sol.GetSolvent().GetCompoundName() + ", Nome do composto quimico organico que está presente na reação: " + sol.GetCompound().GetCompoundName() + ", E o resultado da sua solução é: " + sol.GetSolubilityResult());
-
+            //Debug.Log("Solução: " + sol.GetSolutionName() + " " + "Id: " + sol.GetId() + ", Densidade: " + sol.GetDensity() + ", Cor: " + sol.GetColor() + ", Estado físico: " + sol.GetState() + ", Nome do solvente que está presente na reação: " + sol.GetSolvent().GetCompoundName() + ", Nome do composto quimico organico que está presente na reação: " + sol.GetCompound().GetCompoundName() + ", E o resultado da sua solução é: " + sol.GetSolubilityResult());
         }
     }
 
@@ -106,8 +109,8 @@ public class SubstanceManager : MonoBehaviour
     }
 
     public SubstanceCompound ConvertDataToSubstanceCompound(CompoundData compoundData)
-    {
-        Color color = compoundData.color;
+    {        
+        Color color = ConvertToColor(compoundData.color);
         PhysicalState state = ConvertToPhysicalState(compoundData.state);
         GroupName groupName = ConvertToGroupName(compoundData.groupName);
 
@@ -123,6 +126,45 @@ public class SubstanceManager : MonoBehaviour
         SolubilityResults solubilityResult = ConvertToSolubilityResults(solubilityData.solubilityResult);
 
         return new SubstanceSolution(solubilityData.id, solvent, compound, solubilityData.solutionName, color, state, solubilityData.density, solubilityResult);
+    }
+    
+    public Color ConvertToColor(string colorStr)
+    {
+        //Debug.Log("Converting color string: " + colorStr);
+        if (ColorUtility.TryParseHtmlString(colorStr, out Color color))
+        {
+            //Debug.Log("Converted to: " + color.ToString());
+            return color;
+        }
+        Debug.LogWarning("Failed to convert color string. Defaulting to white.");
+        return Color.white;
+    }
+
+    public PhysicalState ConvertToPhysicalState(string stateStr)
+    {
+        if (Enum.TryParse(typeof(PhysicalState), stateStr, true, out object state))
+        {
+            return (PhysicalState)state;
+        }
+        throw new ArgumentException("Invalid PhysicalState string: " + stateStr);
+    }
+
+    public GroupName ConvertToGroupName(string groupNameStr)
+    {
+        if (Enum.TryParse(typeof(GroupName), groupNameStr, true, out object groupName))
+        {
+            return (GroupName)groupName;
+        }
+        throw new ArgumentException("Invalid GroupName string: " + groupNameStr);
+    }
+
+    public SolubilityResults ConvertToSolubilityResults(string solubilityResultsStr)
+    {
+        if (Enum.TryParse(typeof(SolubilityResults), solubilityResultsStr, true, out object solubilityResult))
+        {
+            return (SolubilityResults)solubilityResult;
+        }
+        throw new ArgumentException("Invalid SolubilityResults string: " + solubilityResultsStr);
     }
 
     public SubstanceSolvent FindSolventByName(string name)
@@ -161,42 +203,5 @@ public class SubstanceManager : MonoBehaviour
     {
         return solutionsList.Find(solution => solution.GetId() == id);
     }
-
-
-    public Color ConvertToColor(string colorStr)
-    {
-        if (ColorUtility.TryParseHtmlString(colorStr, out Color color))
-        {
-            return color;
-        }
-        return Color.white;
-    }
-
-    public PhysicalState ConvertToPhysicalState(string stateStr)
-    {
-        if (Enum.TryParse(typeof(PhysicalState), stateStr, true, out object state))
-        {
-            return (PhysicalState)state;
-        }
-        throw new ArgumentException("Invalid PhysicalState string: " + stateStr);
-    }
-
-    public GroupName ConvertToGroupName(string groupNameStr)
-    {
-        if (Enum.TryParse(typeof(GroupName), groupNameStr, true, out object groupName))
-        {
-            return (GroupName)groupName;
-        }
-        throw new ArgumentException("Invalid GroupName string: " + groupNameStr);
-    }
-
-    public SolubilityResults ConvertToSolubilityResults(string solubilityResultsStr)
-    {
-        if (Enum.TryParse(typeof(SolubilityResults), solubilityResultsStr, true, out object solubilityResult))
-        {
-            return (SolubilityResults)solubilityResult;
-        }
-        throw new ArgumentException("Invalid SolubilityResults string: " + solubilityResultsStr);
-    }
-
+    
 }

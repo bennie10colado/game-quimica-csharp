@@ -2,7 +2,7 @@
 	"compounds": [{
 			"id": 1,
 			"compoundName": "Etanoato de etila",
-			"color": "#FFFFFF",
+			"color": "#FF0000",
 			"state": "LIQUID",
 			"groupName": "S1",
 			"density": 0.9
@@ -10,7 +10,7 @@
 		{
 			"id": 2,
 			"compoundName": "Butanoato de sódio",
-			"color": "#FFFFFF",
+			"color": "#00FF00",
 			"state": "SOLID",
 			"groupName": "S2",
 			"density": 1.1
@@ -18,7 +18,7 @@
 		{
 			"id": 3,
 			"compoundName": "Ácido propanoico",
-			"color": "#FFFFFF",
+			"color": "#FF0000",
 			"state": "LIQUID",
 			"groupName": "SA",
 			"density": 1.05
@@ -26,7 +26,7 @@
 		{
 			"id": 4,
 			"compoundName": "Butan-1-amina",
-			"color": "#FFFFFF",
+			"color": "#AAAAAB",
 			"state": "LIQUID",
 			"groupName": "SB",
 			"density": 0.87
@@ -34,7 +34,7 @@
 		{
 			"id": 5,
 			"compoundName": "Ácido oleico",
-			"color": "#FFFFFF",
+			"color": "#000000",
 			"state": "LIQUID",
 			"groupName": "A1",
 			"density": 0.89
@@ -42,7 +42,7 @@
 		{
 			"id": 6,
 			"compoundName": "4-aminobenzenossulfonamida",
-			"color": "#FFFFFF",
+			"color": "#B6BFFF",
 			"state": "SOLID",
 			"groupName": "A2",
 			"density": 1.3
@@ -50,7 +50,7 @@
 		{
 			"id": 7,
 			"compoundName": "Decano-1-amina",
-			"color": "#FFFFFF",
+			"color": "#B6BAAA",
 			"state": "LIQUID",
 			"groupName": "B",
 			"density": 0.78

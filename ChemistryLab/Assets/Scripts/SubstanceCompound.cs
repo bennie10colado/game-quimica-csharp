@@ -59,9 +59,10 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
         return groupName;
     }
 
-    public Dictionary<SubstanceSolvent, SolubilityResults> GetSolubilityTable()
-    {
-        return solubilityTable;
-    }
+    //public Dictionary<SubstanceSolvent, SolubilityResults> GetSolubilityTable()
+    //{
+    //    return solubilityTable;
+    //}
+    
     //obs: pode-se criar no futuro um método para analisar a solubilidade do composto com um solvente, ou com outros compostos.
 }

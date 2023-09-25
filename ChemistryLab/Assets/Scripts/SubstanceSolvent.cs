@@ -47,4 +47,5 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
     {
         return groupName;
     }
+    
 }
