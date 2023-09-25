@@ -31,88 +31,172 @@ public class SubstanceManager : MonoBehaviour
     public CompoundsCollection compoundsCollection;
     public SolutionsCollection solutionsCollection;
 
-    public List<SolventData> solventsList = new List<SolventData>();
-    public List<CompoundData> compoundsList = new List<CompoundData>();
-    public List<SolubilityData> solutionsList = new List<SolubilityData>();
+    public List<SubstanceSolvent> solventsList = new List<SubstanceSolvent>();
+    public List<SubstanceCompound> compoundsList = new List<SubstanceCompound>();
+    public List<SubstanceSolution> solutionsList = new List<SubstanceSolution>();
 
     void Start()
     {
         LoadSolvents();
         LoadCompounds();
         LoadSolubility();
+
     }
 
     void LoadSolvents()
     {
         string jsonTextSol = File.ReadAllText(solventsJsonFilePath);
         solventsCollection = JsonUtility.FromJson<SolventsCollection>(jsonTextSol);
-
-        foreach (var solvent in solventsCollection.solvents)
+        foreach (var solventData in solventsCollection.solvents)
         {
+            SubstanceSolvent solvent = ConvertDataToSubstanceSolvent(solventData);
             solventsList.Add(solvent);
         }
 
         foreach (var solvent in solventsList)
         {
-            if (solvent != null)
+            if (!solvent) //por algum motivo um objeto completo é tratado como nulo nessa verificacao
             {
-                //Debug.Log("Solvente: " + solvent.compoundName + ", Densidade: " + solvent.density);
-            }
-            else
-            {
-                //Debug.Log("Um solvente nulo foi encontrado na lista");
+                //Debug.Log("Solvente: " + solvent.GetCompoundName() + ", Densidade: " + solvent.GetDensity());
             }
         }
+
     }
 
     void LoadCompounds()
     {
         string jsonTextComp = File.ReadAllText(compoundsJsonFilePath);
         compoundsCollection = JsonUtility.FromJson<CompoundsCollection>(jsonTextComp);
-
-        foreach (var compound in compoundsCollection.compounds)
+        foreach (var compoundData in compoundsCollection.compounds)
         {
+            SubstanceCompound compound = ConvertDataToSubstanceCompound(compoundData);
             compoundsList.Add(compound);
         }
-
         foreach (var compound in compoundsList)
         {
-            if (compound != null)
+            if (!compound)
             {
-                //Debug.Log("Composto: " + compound.compoundName + ", Densidade: " + compound.density);
-            }
-            else
-            {
-                //Debug.Log("Um composto nulo foi encontrado na lista");
+                //Debug.Log("Composto Químico: " + compound.GetCompoundName() + " " + "Id: " + compound.GetId() + ", Densidade: " + compound.GetDensity() + " " + "Cor: " + compound.GetColor() + " " + "Grupo: " + compound.GetGroupName() + " " + "Estado físico: " + compound.GetState() + " ");
             }
         }
-
     }
 
     void LoadSolubility()
     {
         string jsonTextSolub = File.ReadAllText(solutionsJsonFilePath);
-        //Debug.Log(jsonTextSolub);
         solutionsCollection = JsonUtility.FromJson<SolutionsCollection>(jsonTextSolub);
-
-        foreach (var solution in solutionsCollection.solutions)
+        foreach (var solubilityData in solutionsCollection.solutions)
         {
+            SubstanceSolution solution = ConvertDataToSubstanceSolution(solubilityData);
             solutionsList.Add(solution);
         }
 
-        foreach (var solution in solutionsList)
+        foreach (var sol in solutionsList)
         {
-            if (solution != null)
-            {
-                //Debug.Log("Solução: " + solution.solutionName + ", Densidade: " + solution.density);
-            }
-            else
-            {
-                //Debug.Log("Uma solucao nulo foi encontrada na lista");
-            }
+            Debug.Log("Solução: " + sol.GetSolutionName() + " " + "Id: " + sol.GetId() + ", Densidade: " + sol.GetDensity() + ", Cor: " + sol.GetColor() + ", Estado físico: " + sol.GetState() + ", Nome do solvente que está presente na reação: " + sol.GetSolvent().GetCompoundName() + ", Nome do composto quimico organico que está presente na reação: " + sol.GetCompound().GetCompoundName() + ", E o resultado da sua solução é: " + sol.GetSolubilityResult());
+
         }
     }
 
+    public SubstanceSolvent ConvertDataToSubstanceSolvent(SolventData solventData)
+    {
+        Color color = ConvertToColor(solventData.color);
+        PhysicalState state = ConvertToPhysicalState(solventData.state);
+        return new SubstanceSolvent(solventData.id, solventData.compoundName, color, state, solventData.density);
+    }
 
+    public SubstanceCompound ConvertDataToSubstanceCompound(CompoundData compoundData)
+    {
+        Color color = compoundData.color;
+        PhysicalState state = ConvertToPhysicalState(compoundData.state);
+        GroupName groupName = ConvertToGroupName(compoundData.groupName);
+
+        return new SubstanceCompound(compoundData.id, compoundData.compoundName, color, state, compoundData.density, groupName);
+    }
+
+    public SubstanceSolution ConvertDataToSubstanceSolution(SolubilityData solubilityData)
+    {
+        SubstanceSolvent solvent = FindSolventById(solubilityData.solventId);
+        SubstanceCompound compound = FindCompoundById(solubilityData.compoundId);
+        Color color = ConvertToColor(solubilityData.color);
+        PhysicalState state = ConvertToPhysicalState(solubilityData.state);
+        SolubilityResults solubilityResult = ConvertToSolubilityResults(solubilityData.solubilityResult);
+
+        return new SubstanceSolution(solubilityData.id, solvent, compound, solubilityData.solutionName, color, state, solubilityData.density, solubilityResult);
+    }
+
+    public SubstanceSolvent FindSolventByName(string name)
+    {
+        return solventsList.Find(solvent => solvent.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public SubstanceSolvent FindSolventById(int id)
+    {
+        foreach (var solvent in solventsList)
+        {
+            if (solvent.GetId() == id)
+            {
+                return solvent;
+            }
+        }
+        return null;
+    }
+
+    public SubstanceCompound FindCompoundByName(string name)
+    {
+        return compoundsList.Find(compound => compound.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public SubstanceCompound FindCompoundById(int id)
+    {
+        return compoundsList.Find(compound => compound.GetId() == id);
+    }
+
+    public SubstanceSolution FindSolutionByName(string name)
+    {
+        return solutionsList.Find(solution => solution.GetSolutionName().Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public SubstanceSolution FindSolutionById(int id)
+    {
+        return solutionsList.Find(solution => solution.GetId() == id);
+    }
+
+
+    public Color ConvertToColor(string colorStr)
+    {
+        if (ColorUtility.TryParseHtmlString(colorStr, out Color color))
+        {
+            return color;
+        }
+        return Color.white;
+    }
+
+    public PhysicalState ConvertToPhysicalState(string stateStr)
+    {
+        if (Enum.TryParse(typeof(PhysicalState), stateStr, true, out object state))
+        {
+            return (PhysicalState)state;
+        }
+        throw new ArgumentException("Invalid PhysicalState string: " + stateStr);
+    }
+
+    public GroupName ConvertToGroupName(string groupNameStr)
+    {
+        if (Enum.TryParse(typeof(GroupName), groupNameStr, true, out object groupName))
+        {
+            return (GroupName)groupName;
+        }
+        throw new ArgumentException("Invalid GroupName string: " + groupNameStr);
+    }
+
+    public SolubilityResults ConvertToSolubilityResults(string solubilityResultsStr)
+    {
+        if (Enum.TryParse(typeof(SolubilityResults), solubilityResultsStr, true, out object solubilityResult))
+        {
+            return (SolubilityResults)solubilityResult;
+        }
+        throw new ArgumentException("Invalid SolubilityResults string: " + solubilityResultsStr);
+    }
 
 }

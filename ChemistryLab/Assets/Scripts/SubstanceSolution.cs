@@ -24,5 +24,14 @@ public class SubstanceSolution : MonoBehaviour
         this.density = density;
         this.solubilityResult = solubilityResult;
     }
+    
+    public int GetId() => id;
+    public SubstanceSolvent GetSolvent() => solvent;
+    public SubstanceCompound GetCompound() => compound;
+    public string GetSolutionName() => solutionName;
+    public Color GetColor() => color;
+    public PhysicalState GetState() => state;
+    public float GetDensity() => density;
+    public SolubilityResults GetSolubilityResult() => solubilityResult;
 
 }

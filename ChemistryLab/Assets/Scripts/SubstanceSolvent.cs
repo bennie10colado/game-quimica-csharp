@@ -19,7 +19,10 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
         this.density = density;
         this.groupName = GroupName.Solvent;
     }
-
+    public int GetId()
+    {
+        return idSolvent;
+    }
     public string GetCompoundName()
     {
         return compoundName;

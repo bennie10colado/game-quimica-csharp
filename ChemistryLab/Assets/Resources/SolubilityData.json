@@ -1,23 +1,134 @@
 {
-	"solutions": [{
-			"id": 1,
-			"solventId": 1,
-			"compoundId": 1,
-			"solutionName": "Solução de Etanoato de etila em Água",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 0.95,
-			"solubilityResult": "Soluble"
-		},
-		{
-			"id": 2,
-			"solventId": 2,
-			"compoundId": 2,
-			"solutionName": "Solução de Butanoato de sódio em Éter dietílico",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 0.9,
-			"solubilityResult": "InsolubleBelow"
-		}
-	]
+  "solutions": [
+    {
+      "id": 1,
+      "solventId": 1,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em Água",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 2,
+      "solventId": 2,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em Éter dietílico",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 3,
+      "solventId": 3,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em Tornassol",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Incolor"
+    },
+    {
+      "id": 4,
+      "solventId": 4,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em NaOH 5%",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 5,
+      "solventId": 5,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em NaHCO3 5%",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 6,
+      "solventId": 6,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em HCl 5%",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 7,
+      "solventId": 7,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em H2SO4 96%",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 8,
+      "solventId": 8,
+      "compoundId": 1,
+      "solutionName": "Solução de Etanoato de etila em H3PO4 85%",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 0.902,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 9,
+      "solventId": 1,
+      "compoundId": 2,
+      "solutionName": "Solução de Butanoato de sódio em Água",
+      "color": "#FFFFFF",
+      "state": "SOLID",
+      "density": 1.055,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 10,
+      "solventId": 2,
+      "compoundId": 2,
+      "solutionName": "Solução de Butanoato de sódio em Éter dietílico",
+      "color": "#FFFFFF",
+      "state": "SOLID",
+      "density": 1.055,
+      "solubilityResult": "InsolubleBelow"
+    },
+    {
+      "id": 11,
+      "solventId": 3,
+      "compoundId": 2,
+      "solutionName": "Solução de Butanoato de sódio em Tornassol",
+      "color": "#FFFFFF",
+      "state": "SOLID",
+      "density": 1.055,
+      "solubilityResult": "A"
+    },
+    {
+      "id": 12,
+      "solventId": 4,
+      "compoundId": 2,
+      "solutionName": "Solução de Butanoato de sódio em NaOH 5%",
+      "color": "#FFFFFF",
+      "state": "SOLID",
+      "density": 1.055,
+      "solubilityResult": "Soluble"
+    },
+    {
+      "id": 80,
+      "solventId": 8,
+      "compoundId": 10,
+      "solutionName": "Solução de orto-diclorobbenzeno em H3PO4 85%",
+      "color": "#FFFFFF",
+      "state": "LIQUID",
+      "density": 1.30,
+      "solubilityResult": "InsolubleAbove"
+    }
+  ]
 }

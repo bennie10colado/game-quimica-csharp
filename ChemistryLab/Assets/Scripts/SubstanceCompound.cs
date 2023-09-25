@@ -29,6 +29,11 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
         solubilityTable[solvent] = isSoluble;
     }
 
+    public int GetId()
+    {
+        return idCompound;
+    }
+
     public string GetCompoundName()
     {
         return compoundName;
