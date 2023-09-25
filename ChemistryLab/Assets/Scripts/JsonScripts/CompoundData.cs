@@ -6,9 +6,11 @@ using UnityEngine;
 public class CompoundData
 {
     public string compoundName;
-    public SolubilityInfo solubility;
-    public Color color;
     public string groupName;
-    public PhysicalState physicalState;
+    public string physicalState;
+    public Color color;
     public float density;
+    public Dictionary<string, string> solubility;
 }
+
+

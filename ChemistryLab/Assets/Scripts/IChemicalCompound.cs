@@ -8,5 +8,5 @@ public interface IChemicalCompound
     Color GetColor();
     PhysicalState GetState();
     float GetDensity();
-    //bool IsSoluble(SubstanceCompound compound); 
+    GroupName GetGroupName();
 }

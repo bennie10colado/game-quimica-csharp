@@ -19,16 +19,16 @@ public class Reaction
         Debug.Log("-> Composto Orgânico: " + compound.GetCompoundName());
         Debug.Log("-> Solvente: " + solvent.GetCompoundName());
 
-        if (!solvent.IsSoluble(compound))
-        {
-            Debug.Log("Composto e solvente não são solúveis entre si!"); 
-			DensitySolution(compound, solvent);//se nao for soluvel, calcula a diferença de fases
-        }else{
-        Debug.Log("Composto e solvente são solúveis!");
-		}
+        //if (!solvent.IsSoluble(compound))
+        //{
+        //    Debug.Log("Composto e solvente não são solúveis entre si!"); 
+		//	DensitySolution(compound, solvent);//se nao for soluvel, calcula a diferença de fases
+        //}else{
+        //Debug.Log("Composto e solvente são solúveis!");
+		//}
 		
 		//produto resultado predefinido que será retornado, e posteriormente pode se tornar um gameobject instanciado no cenario	
-        SubstanceCompound reactionProduct = new SubstanceCompound(compound.GetCompoundName(), Color.white, PhysicalState.LIQUID, 0.8f, "S1");
+        SubstanceCompound reactionProduct = new SubstanceCompound(compound.GetCompoundName(), Color.white, PhysicalState.LIQUID, 0.8f, GroupName.S1);
         
         //Debug.Log("Reação ocorreu, composto e solvente são solúveis! Produto da reação é o: " + reactionProduct.GetCompoundName());
 

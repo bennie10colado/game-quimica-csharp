@@ -1,27 +1,174 @@
 {
-    "compounds": [
-        {
-          "compoundName": "Etanoato de etila",
-          "solubility": {
-            "water": true,
-            "eter": false
-          },
-          "groupName": "S1",
-          "physicalState": "LIQUID",
-          "density": 0.9,
-          "color": "#FFFFFF"
-        },
-        {
-          "compoundName": "Butanoato de sodio",
-          "solubility": {
-            "water": true,
-            "eter": false
-          },
-          "groupName": "S2",
-          "physicalState": "SOLID",
-          "density": 1.2,
-          "color": "#FFFFFF"
-        }
-      ]
-  }
-  
+  "compounds": [
+    {
+      "compoundName": "Etanoato de etila",
+      "groupName": "Estér",
+      "physicalState": "líquido",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 0.902,
+      "solubility": {
+        "Água": "S",
+        "Éter dietílico": "S",
+        "Tornassol": "Inc",
+        "NaOH 5%": "S",
+        "NaHCO3 5%": "S",
+        "HCl 5%": "S",
+        "H2SO4 96%": "S",
+        "H3PO4 85%": "S"
+      }
+    },
+    {
+      "compoundName": "Butanoato de sódio",
+      "groupName": "Sal",
+      "physicalState": "sólido",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 1.055,
+      "solubility": {
+        "Água": "S",
+        "Éter dietílico": "I_DOWN",
+        "Tornassol": "A",
+        "NaOH 5%": "S",
+        "NaHCO3 5%": "S",
+        "HCl 5%": "S",
+        "H2SO4 96%": "S",
+        "H3PO4 85%": "S"
+      }
+    },
+    {
+      "compoundName": "Ácido propanoico",
+      "groupName": "Ácido Carboxílico",
+      "physicalState": "líquido",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 0.993,
+      "solubility": {
+        "Água": "S",
+        "Éter dietílico": "S",
+        "Tornassol": "V",
+        "NaOH 5%": "S",
+        "NaHCO3 5%": "S",
+        "HCl 5%": "S",
+        "H2SO4 96%": "S",
+        "H3PO4 85%": "S"
+      }
+    },
+    {
+      "compoundName": "Butan-1-amina",
+      "groupName": "Amina",
+      "physicalState": "líquida",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 0.741,
+      "solubility": {
+        "Água": "S",
+        "Éter dietílico": "S",
+        "Tornassol": "A",
+        "NaOH 5%": "S",
+        "NaHCO3 5%": "S",
+        "HCl 5%": "S",
+        "H2SO4 96%": "S",
+        "H3PO4 85%": "S"
+      }
+    },
+    {
+      "compoundName": "Ácido oleico",
+      "groupName": "Ácido Graxo",
+      "physicalState": "líquido",
+      "color": {"r": 1, "g": 1, "b": 0, "a": 1},
+      "density": 0.895,
+      "solubility": {
+        "Água": "I_UP",
+        "Éter dietílico": "S",
+        "Tornassol": "I_UP",
+        "NaOH 5%": "S",
+        "NaHCO3 5%": "S",
+        "HCl 5%": "I_UP",
+        "H2SO4 96%": "I_UP",
+        "H3PO4 85%": "I_UP"
+      }
+    },
+    {
+      "compoundName": "4-aminobenzenossulfonamida",
+      "groupName": "Sulfonamida",
+      "physicalState": "sólida",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 1.25,
+      "solubility": {
+        "Água": "I_DOWN",
+        "Éter dietílico": "S",
+        "Tornassol": "I_DOWN",
+        "NaOH 5%": "S",
+        "NaHCO3 5%": "I_DOWN",
+        "HCl 5%": "I_DOWN",
+        "H2SO4 96%": "I_UP",
+        "H3PO4 85%": "I_UP"
+      }
+    },
+    {
+      "compoundName": "Decano-1-amina",
+      "groupName": "Amina",
+      "physicalState": "líquido",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 0.718,
+      "solubility": {
+        "Água": "I_UP",
+        "Éter dietílico": "S",
+        "Tornassol": "I_UP",
+        "NaOH 5%": "I_UP",
+        "NaHCO3 5%": "I_UP",
+        "HCl 5%": "S",
+        "H2SO4 96%": "S",
+        "H3PO4 85%": "S"
+      }
+    },
+    {
+      "compoundName": "Cicloexanona",
+      "groupName": "Cetona",
+      "physicalState": "líquido",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 0.948,
+      "solubility": {
+        "Água": "I_UP",
+        "Éter dietílico": "S",
+        "Tornassol": "I_UP",
+        "NaOH 5%": "I_UP",
+        "NaHCO3 5%": "I_UP",
+        "HCl 5%": "I_UP",
+        "H2SO4 96%": "S",
+        "H3PO4 85%": "S"
+      }
+    },
+    {
+      "compoundName": "Metilbenzeno",
+      "groupName": "Hidrocarboneto",
+      "physicalState": "líquido",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 0.867,
+      "solubility": {
+        "Água": "I_UP",
+        "Éter dietílico": "S",
+        "Tornassol": "I_UP",
+        "NaOH 5%": "I_UP",
+        "NaHCO3 5%": "I_UP",
+        "HCl 5%": "I_UP",
+        "H2SO4 96%": "S",
+        "H3PO4 85%": "I_UP"
+      }
+    },
+    {
+      "compoundName": "orto-diclorobbenzeno",
+      "groupName": "Hidrocarboneto",
+      "physicalState": "líquido",
+      "color": {"r": 1, "g": 1, "b": 1, "a": 1},
+      "density": 1.30,
+      "solubility": {
+        "Água": "I_DOWN",
+        "Éter dietílico": "S",
+        "Tornassol": "I_DOWN",
+        "NaOH 5%": "I_DOWN",
+        "NaHCO3 5%": "I_DOWN",
+        "HCl 5%": "I_DOWN",
+        "H2SO4 96%": "I_UP",
+        "H3PO4 85%": "I_UP"
+      }
+    }
+  ]
+}

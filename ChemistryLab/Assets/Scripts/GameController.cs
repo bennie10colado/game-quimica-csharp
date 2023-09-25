@@ -87,22 +87,4 @@ public class GameController : MonoBehaviour
         player.UpdateScore(score);
     }
 
-    //void UpdateTime(int seconds){time += seconds;}
-
-    void Update() { }
-
-    void TestSolubility(SubstanceSolvent solvent, SubstanceCompound compound)
-    {
-        bool isSoluble = solvent.IsSoluble(compound);
-        if (isSoluble)
-        {
-            Debug.Log(compound.GetCompoundName() + " is soluble in " + solvent.GetCompoundName());
-        }
-        else
-        {
-            Debug.Log(compound.GetCompoundName() + " is not soluble in " + solvent.GetCompoundName());
-        }
-    }
-
-
 }
