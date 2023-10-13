@@ -12,7 +12,7 @@ public class CompoundsCollection
 [System.Serializable]
 public class SolventsCollection
 {
-    public List<SolventData> solvents;
+        public List<SolventData> solvents;
 }
 
 [System.Serializable]

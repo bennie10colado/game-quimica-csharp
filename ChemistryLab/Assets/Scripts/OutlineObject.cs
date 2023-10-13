@@ -15,7 +15,7 @@ public class OutlineObject : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Outline component not found on the object.");
+            Debug.Log("Outline component not found on the object.");
         }
     }
 
@@ -38,7 +38,7 @@ public class OutlineObject : MonoBehaviour
         
         if (gameObject.layer == clickEventsLayer)
         {
-            Debug.LogWarning("Clique detectado pelo outline!!!!!!!!!!!!!");
+            Debug.Log("Clique detectado pelo outline!!!!!!");
 			
 			//continuar para receber camera lentamente ou entao mudar de cena
 			//SceneManager.LoadScene("NomeDaCenaDoModoDeJogo");

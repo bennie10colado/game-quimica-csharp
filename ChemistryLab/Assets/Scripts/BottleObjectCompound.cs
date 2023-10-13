@@ -30,7 +30,7 @@ public class BottleObjectCompound : MonoBehaviour
         GetComponent<Renderer>().material = myMaterial;
 
 
-        Debug.Log("BottleObjectCompound configurado com " + compoundName);
+        //Debug.Log("BottleObjectCompound configurado com " + compoundName);
     }
     
     public string GetInfo()

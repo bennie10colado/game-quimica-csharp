@@ -36,9 +36,9 @@ public class GameControllerChemical : MonoBehaviour
             BottleObjectSolvent bottleSol = bottles_solvents[i].GetComponent<BottleObjectSolvent>();
             if (bottleSol != null)
             {
-                Debug.Log("Configurando BottleObjectSolvent com " + substanceManager.solventsList[i].GetCompoundName());
+                //Debug.Log("Configurando BottleObjectSolvent com " + substanceManager.solventsList[i].GetCompoundName());
                 bottleSol.ConfigureSolvent(substanceManager.solventsList[i]);
-                Debug.Log(bottleSol.GetInfo());
+                //Debug.Log(bottleSol.GetInfo());
             }
         }
 
@@ -58,7 +58,7 @@ public class GameControllerChemical : MonoBehaviour
                 {
                     //Debug.Log("Configuring solution object " + i);
                     solutionObject.ConfigureSolution(substanceManager.solutionsList[i]);
-                    Debug.Log(solutionObject.GetInfo());
+                    //Debug.Log(solutionObject.GetInfo());
                 }
                 else
                 {

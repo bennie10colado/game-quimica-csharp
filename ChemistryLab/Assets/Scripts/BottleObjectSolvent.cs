@@ -27,14 +27,42 @@ public class BottleObjectSolvent : MonoBehaviour
         }
         GetComponent<Renderer>().material = myMaterial;
 
-
         GetComponent<Renderer>().material.color = color;
         Debug.Log("BottleObjectSolvent configurado com " + compoundName);
+    }
+
+    public int GetId()
+    {
+        return idSolvent;
+    }
+
+    public string GetCompoundName()
+    {
+        return compoundName;
+    }
+
+    public Color GetColor()
+    {
+        return color;
+    }
+
+    public PhysicalState GetState()
+    {
+        return state;
+    }
+
+    public GroupName GetGroupName()
+    {
+        return groupName;
+    }
+
+    public float GetDensity()
+    {
+        return density;
     }
     
     public string GetInfo()
     {
         return "Solvent Name: " + compoundName + ", Color: " + color + ", Density: " + density + ", State: " + state + ", nome do grupo: " + groupName + ", idSolvent: " + idSolvent;
     }
-    
 }
