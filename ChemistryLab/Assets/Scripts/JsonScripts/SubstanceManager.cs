@@ -204,4 +204,9 @@ public class SubstanceManager : MonoBehaviour
         return solutionsList.Find(solution => solution.GetId() == id);
     }
     
+
+
+
+
+    
 }

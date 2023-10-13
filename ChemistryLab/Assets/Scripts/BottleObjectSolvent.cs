@@ -31,6 +31,7 @@ public class BottleObjectSolvent : MonoBehaviour
         Debug.Log("BottleObjectSolvent configurado com " + compoundName);
     }
 
+    // Getters
     public int GetId()
     {
         return idSolvent;

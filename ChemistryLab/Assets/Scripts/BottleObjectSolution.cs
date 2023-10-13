@@ -11,6 +11,47 @@ public class BottleSolutionObject : MonoBehaviour
         this.solution = solution;
     }
 
+    // Getters
+    public int GetId()
+    {
+        return solution.GetId();
+    }
+
+    public string GetSolutionName()
+    {
+        return solution.GetSolutionName();
+    }
+
+    public SubstanceSolvent GetSolvent()
+    {
+        return solution.GetSolvent();
+    }
+
+    public SubstanceCompound GetCompound()
+    {
+        return solution.GetCompound();
+    }
+
+    public Color GetColor()
+    {
+        return solution.GetColor();
+    }
+
+    public PhysicalState GetState()
+    {
+        return solution.GetState();
+    }
+
+    public float GetDensity()
+    {
+        return solution.GetDensity();
+    }
+
+    public SolubilityResults GetSolubilityResult()
+    {
+        return solution.GetSolubilityResult();
+    }
+
     public string GetInfo()
     {
         return string.Format(
@@ -22,16 +63,14 @@ public class BottleSolutionObject : MonoBehaviour
             ", State: {5}" +
             ", Density: {6}" +
             ", Solubility Result: {7}\n",
-            solution.GetId(),
-            solution.GetSolutionName(),
-            solution.GetSolvent().GetCompoundName(), 
-            solution.GetCompound().GetCompoundName(),
-            ColorUtility.ToHtmlStringRGBA(solution.GetColor()),
-            solution.GetState(),
-            solution.GetDensity(),
-            solution.GetSolubilityResult()
+            GetId(),
+            GetSolutionName(),
+            GetSolvent().GetCompoundName(),
+            GetCompound().GetCompoundName(),
+            ColorUtility.ToHtmlStringRGBA(GetColor()),
+            GetState(),
+            GetDensity(),
+            GetSolubilityResult()
         );
     }
 }
-
-

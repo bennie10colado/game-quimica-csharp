@@ -6,7 +6,11 @@ public class ClickingChemicalObject : MonoBehaviour
 {
     public LayerMask clickEventsLayer;
     private bool isMouseOverObject = false;
-    public SubstanceManager substanceManager; // Você pode configurar isso no Unity Inspector
+    public SubstanceManager substanceManager;
+    
+    // Variáveis para rastrear a seleção de objetos
+    private GameObject selectedCompound = null;
+    private GameObject selectedSolvent = null;
 
     private void Update()
     {
@@ -19,13 +23,28 @@ public class ClickingChemicalObject : MonoBehaviour
             if (compound != null)
             {
                 Debug.Log(compound.GetInfo());
+
+                // Selecionar o composto
+                selectedCompound = gameObject;
+
+                // Verificar se já selecionou um solvente e, se sim, iniciar a reação
+                if (selectedSolvent != null)
+                {
+                    StartReaction();
+                }
             }
             else if (solvent != null)
             {
                 Debug.Log(solvent.GetInfo());
 
-                // Realize a reação com base nos IDs do solvente e do composto
-                PerformReaction(solvent.GetId(), compound.GetSubstanceCompound().id);
+                // Selecionar o solvente
+                selectedSolvent = gameObject;
+
+                // Verificar se já selecionou um composto e, se sim, iniciar a reação
+                if (selectedCompound != null)
+                {
+                    StartReaction();
+                }
             }
             else
             {
@@ -47,24 +66,19 @@ public class ClickingChemicalObject : MonoBehaviour
         isMouseOverObject = false;
     }
 
-    // Função para realizar a reação com base nos IDs do solvente e do composto
-    private void PerformReaction(int solventId, int compoundId)
+    private void StartReaction()
     {
-        // Consulte seu banco de dados (ou JSON) para obter informações sobre a reação
-        // Implemente a lógica da reação com base nos IDs
-        // Aqui está um exemplo simples:
-
-        // Consulte o banco de dados de reações para encontrar a reação com solventeId e compoundId
-        ReactionData reaction = substanceManager.GetReactionData(solventId, compoundId);
-
-        if (reaction != null)
+        if (selectedCompound != null && selectedSolvent != null)
         {
-            Debug.Log("Reação realizada: " + reaction.solutionName);
-            // Atualize o cenário com base na reação, por exemplo, crie um novo objeto para representar a solução resultante.
-        }
-        else
-        {
-            Debug.Log("Reação não encontrada para solventeId: " + solventId + " e compoundId: " + compoundId);
+            int compoundId = selectedCompound.GetComponent<BottleObjectCompound>().GetId();
+            int solventId = selectedSolvent.GetComponent<BottleObjectSolvent>().GetId();
+            
+            // Realizar a reação
+            substanceManager.PerformReaction(solventId, compoundId);
+            
+            // Limpar a seleção
+            selectedCompound = null;
+            selectedSolvent = null;
         }
     }
 }
