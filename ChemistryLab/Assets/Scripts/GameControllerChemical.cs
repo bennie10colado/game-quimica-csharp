@@ -23,6 +23,14 @@ public class GameControllerChemical : MonoBehaviour
         Debug.Log("Quantidade de bottles_compounds: " + bottles_compounds.Length);
         Debug.Log("Quantidade de bottles_solvents: " + bottles_solvents.Length);
 
+        ConfiguratingCompoundBottlesInGUI();
+        ConfiguratingSolventBottlesInGUI();
+        
+        //InstantiateSolutionsBottlesInGUI();
+    }
+
+    void ConfiguratingCompoundBottlesInGUI()
+    {
 
         for (int i = 0; i < Mathf.Min(bottles_compounds.Length, substanceManager.compoundsList.Count); i++)
         {
@@ -34,7 +42,10 @@ public class GameControllerChemical : MonoBehaviour
                 Debug.Log(bottleComp.GetInfo());
             }
         }
+    }
 
+    void ConfiguratingSolventBottlesInGUI()
+    {
         for (int i = 0; i < Mathf.Min(bottles_solvents.Length, substanceManager.solventsList.Count); i++)
         {
             BottleObjectSolvent bottleSol = bottles_solvents[i].GetComponent<BottleObjectSolvent>();
@@ -45,7 +56,9 @@ public class GameControllerChemical : MonoBehaviour
                 //Debug.Log(bottleSol.GetInfo());
             }
         }
-
+    }
+    void InstantiateSolutionsBottlesInGUI()
+    {
         float offsetX = 0.7f;
 
         for (int i = 0; i < substanceManager.solutionsList.Count; i++)
@@ -62,7 +75,7 @@ public class GameControllerChemical : MonoBehaviour
                 {
                     //Debug.Log("Configuring solution object " + i);
                     solutionObject.ConfigureSolution(substanceManager.solutionsList[i]);
-                    //Debug.Log(solutionObject.GetInfo());
+                    Debug.Log(solutionObject.GetInfo());
                 }
                 else
                 {
@@ -74,6 +87,5 @@ public class GameControllerChemical : MonoBehaviour
                 Debug.Log("Solution object " + i + " instantiation failed");
             }
         }
-
     }
 }

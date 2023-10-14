@@ -6,25 +6,21 @@ public class ClickingChemicalObject : MonoBehaviour
 {
     public LayerMask clickEventsLayer;
     private bool isMouseOverObject = false;
-
+    private BottleObjectCompound lastSelectedCompound;
+    private BottleObjectSolvent lastSelectedSolvent;
     private void Update()
     {
         if (isMouseOverObject && Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Clique detectado no objeto com a tag: " + gameObject.tag);
+            //Debug.Log("Clique detectado no objeto com a tag: " + gameObject.tag);
             BottleObjectCompound compound = GetComponent<BottleObjectCompound>();
             BottleObjectSolvent solvent = GetComponent<BottleObjectSolvent>();
-            BottleSolutionObject solution = GetComponent<BottleSolutionObject>();
 
             if (compound != null)
             {
                 Debug.Log(compound.GetInfo());
             }
             else if (solvent != null)
-            {
-                Debug.Log(solvent.GetInfo());
-            }
-            else if (solution != null)
             {
                 Debug.Log(solvent.GetInfo());
             }
@@ -37,7 +33,7 @@ public class ClickingChemicalObject : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (gameObject.CompareTag("Solvent") || gameObject.CompareTag("Compound") || gameObject.CompareTag("Solution"))
+        if (gameObject.CompareTag("Solvent") || gameObject.CompareTag("Compound"))
         {
             isMouseOverObject = true;
         }

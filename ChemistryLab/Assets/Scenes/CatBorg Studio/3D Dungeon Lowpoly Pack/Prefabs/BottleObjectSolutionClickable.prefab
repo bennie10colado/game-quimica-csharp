@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5098792405659287252}
   - component: {fileID: 1522900661278481209}
   - component: {fileID: 8943313419143938140}
+  - component: {fileID: 4366511786116927547}
   m_Layer: 6
-  m_Name: BottleObjectSolutionPrefabInst
+  m_Name: BottleObjectSolutionClickable
   m_TagString: Solution
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,5 +132,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a32a1e472275b842a643418d356efcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4366511786116927547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163617556293284183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4dff4f46da73274597f250a0eca1487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
