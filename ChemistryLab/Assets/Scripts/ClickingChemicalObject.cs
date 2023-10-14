@@ -18,11 +18,18 @@ public class ClickingChemicalObject : MonoBehaviour
 
             if (compound != null)
             {
-                Debug.Log(compound.GetInfo());
+                Debug.Log("Composto atual: " + compound.GetInfo());
+
+                lastSelectedCompound = compound;
+                Debug.Log(lastSelectedCompound.GetCompoundName() + " selecionado.");
             }
             else if (solvent != null)
             {
-                Debug.Log(solvent.GetInfo());
+                Debug.Log("Solvente atual: " + solvent.GetInfo());
+
+                lastSelectedSolvent = solvent; 
+                Debug.Log(lastSelectedSolvent.GetCompoundName() + " selecionado.");
+
             }
             else
             {

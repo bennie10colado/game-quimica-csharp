@@ -5,19 +5,19 @@ using UnityEngine;
 public class SubstanceSolution : MonoBehaviour
 {
     private int id;
-    private SubstanceSolvent solvent;
-    private SubstanceCompound compound;
+    private int idSolvent;
+    private int idCompound;
     private string solutionName;
     private Color color;
     private PhysicalState state;
     private float density;
     private SolubilityResults solubilityResult;
 
-    public SubstanceSolution(int id, SubstanceSolvent solvent, SubstanceCompound compound, string solutionName, Color color, PhysicalState state, float density, SolubilityResults solubilityResult)
+    public SubstanceSolution(int id, int solvent, int compound, string solutionName, Color color, PhysicalState state, float density, SolubilityResults solubilityResult)
     {
         this.id = id;
-        this.solvent = solvent;
-        this.compound = compound;
+        this.idSolvent = solvent;
+        this.idCompound = compound;
         this.solutionName = solutionName;
         this.color = color;
         this.state = state;
@@ -26,8 +26,8 @@ public class SubstanceSolution : MonoBehaviour
     }
     
     public int GetId() => id;
-    public SubstanceSolvent GetSolvent() => solvent;
-    public SubstanceCompound GetCompound() => compound;
+    public int GetSolvent() => idSolvent;
+    public int GetCompound() => idCompound;
     public string GetSolutionName() => solutionName;
     public Color GetColor() => color;
     public PhysicalState GetState() => state;
