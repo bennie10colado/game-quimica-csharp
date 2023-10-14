@@ -22,14 +22,14 @@ public class BottleSolutionObject : MonoBehaviour
         return solution.GetSolutionName();
     }
 
-    public SubstanceSolvent GetSolvent()
+    public int GetSolventId()
     {
-        return solution.GetSolvent();
+        return solution.GetSolventId();
     }
 
-    public SubstanceCompound GetCompound()
+    public int GetCompoundId()
     {
-        return solution.GetCompound();
+        return solution.GetCompoundId();
     }
 
     public Color GetColor()
@@ -57,16 +57,16 @@ public class BottleSolutionObject : MonoBehaviour
         return string.Format(
             "Solution ID: {0}" +
             ", Solution Name: {1}" +
-            ", Solvent: {2}" +
-            ", Compound: {3}" +
+            ", SolventId: {2}" +
+            ", CompoundId: {3}" +
             ", Color: {4}" +
             ", State: {5}" +
             ", Density: {6}" +
             ", Solubility Result: {7}\n",
             GetId(),
             GetSolutionName(),
-            GetSolvent().GetCompoundName(),
-            GetCompound().GetCompoundName(),
+            GetSolventId(),
+            GetCompoundId(),
             ColorUtility.ToHtmlStringRGBA(GetColor()),
             GetState(),
             GetDensity(),

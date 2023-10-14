@@ -21,13 +21,13 @@ public class SubstanceSolution : MonoBehaviour
         this.solutionName = solutionName;
         this.color = color;
         this.state = state;
-        this.density = density; 
+        this.density = density;
         this.solubilityResult = solubilityResult;
     }
-    
+
     public int GetId() => id;
-    public int GetSolvent() => idSolvent;
-    public int GetCompound() => idCompound;
+    public int GetSolventId() => idSolvent;
+    public int GetCompoundId() => idCompound;
     public string GetSolutionName() => solutionName;
     public Color GetColor() => color;
     public PhysicalState GetState() => state;

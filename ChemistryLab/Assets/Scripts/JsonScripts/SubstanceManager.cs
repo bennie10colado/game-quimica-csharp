@@ -119,13 +119,13 @@ public class SubstanceManager : MonoBehaviour
 
     public SubstanceSolution ConvertDataToSubstanceSolution(SolubilityData solubilityData)
     {
-        SubstanceSolvent solvent = FindSolventById(solubilityData.solventId);
-        SubstanceCompound compound = FindCompoundById(solubilityData.compoundId);
+        //SubstanceSolvent solvent = FindSolventById(solubilityData.solventId);
+        //SubstanceCompound compound = FindCompoundById(solubilityData.compoundId);
         Color color = ConvertToColor(solubilityData.color);
         PhysicalState state = ConvertToPhysicalState(solubilityData.state);
         SolubilityResults solubilityResult = ConvertToSolubilityResults(solubilityData.solubilityResult);
 
-        return new SubstanceSolution(solubilityData.id, solvent, compound, solubilityData.solutionName, color, state, solubilityData.density, solubilityResult);
+        return new SubstanceSolution(solubilityData.id, solubilityData.solventId, solubilityData.compoundId, solubilityData.solutionName, color, state, solubilityData.density, solubilityResult);
     }
     
     public Color ConvertToColor(string colorStr)
