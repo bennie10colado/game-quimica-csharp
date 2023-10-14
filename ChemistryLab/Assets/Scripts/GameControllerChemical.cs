@@ -12,6 +12,10 @@ public class GameControllerChemical : MonoBehaviour
     public GameObject solutionPrefab;
     public Transform solutionParent;
 
+    private SubstanceSolvent lastSelectedSolvent;
+    private SubstanceCompound lastSelectedCompound;
+
+
     void Start()
     {
         Debug.Log("Quantidade de compounds: " + substanceManager.compoundsList.Count);
@@ -46,7 +50,7 @@ public class GameControllerChemical : MonoBehaviour
 
         for (int i = 0; i < substanceManager.solutionsList.Count; i++)
         {
-            Vector3 positionOffset = new Vector3(i * offsetX, 0, 0); 
+            Vector3 positionOffset = new Vector3(i * offsetX, 0, 0);
             GameObject newSolutionObject = Instantiate(solutionPrefab, solutionParent.position + positionOffset, Quaternion.identity, solutionParent);
             //Debug.Log("Instantiating solution object " + i);
 

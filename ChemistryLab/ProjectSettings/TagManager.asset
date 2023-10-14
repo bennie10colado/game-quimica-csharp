@@ -8,6 +8,9 @@ TagManager:
   - Navmesh
   - ClickEvents
   - Water
+  - Solvent
+  - Compound
+  - Solution
   layers:
   - Default
   - TransparentFX

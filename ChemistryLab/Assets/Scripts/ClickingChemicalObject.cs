@@ -6,11 +6,6 @@ public class ClickingChemicalObject : MonoBehaviour
 {
     public LayerMask clickEventsLayer;
     private bool isMouseOverObject = false;
-    public SubstanceManager substanceManager;
-    
-    // Variáveis para rastrear a seleção de objetos
-    private GameObject selectedCompound = null;
-    private GameObject selectedSolvent = null;
 
     private void Update()
     {
@@ -19,32 +14,19 @@ public class ClickingChemicalObject : MonoBehaviour
             Debug.Log("Clique detectado no objeto com a tag: " + gameObject.tag);
             BottleObjectCompound compound = GetComponent<BottleObjectCompound>();
             BottleObjectSolvent solvent = GetComponent<BottleObjectSolvent>();
-            
+            BottleSolutionObject solution = GetComponent<BottleSolutionObject>();
+
             if (compound != null)
             {
                 Debug.Log(compound.GetInfo());
-
-                // Selecionar o composto
-                selectedCompound = gameObject;
-
-                // Verificar se já selecionou um solvente e, se sim, iniciar a reação
-                if (selectedSolvent != null)
-                {
-                    StartReaction();
-                }
             }
             else if (solvent != null)
             {
                 Debug.Log(solvent.GetInfo());
-
-                // Selecionar o solvente
-                selectedSolvent = gameObject;
-
-                // Verificar se já selecionou um composto e, se sim, iniciar a reação
-                if (selectedCompound != null)
-                {
-                    StartReaction();
-                }
+            }
+            else if (solution != null)
+            {
+                Debug.Log(solvent.GetInfo());
             }
             else
             {
@@ -52,10 +34,10 @@ public class ClickingChemicalObject : MonoBehaviour
             }
         }
     }
-    
+
     private void OnMouseEnter()
     {
-        if (gameObject.CompareTag("Solvent") || gameObject.CompareTag("Compound"))
+        if (gameObject.CompareTag("Solvent") || gameObject.CompareTag("Compound") || gameObject.CompareTag("Solution"))
         {
             isMouseOverObject = true;
         }
@@ -64,21 +46,5 @@ public class ClickingChemicalObject : MonoBehaviour
     private void OnMouseExit()
     {
         isMouseOverObject = false;
-    }
-
-    private void StartReaction()
-    {
-        if (selectedCompound != null && selectedSolvent != null)
-        {
-            int compoundId = selectedCompound.GetComponent<BottleObjectCompound>().GetId();
-            int solventId = selectedSolvent.GetComponent<BottleObjectSolvent>().GetId();
-            
-            // Realizar a reação
-            substanceManager.PerformReaction(solventId, compoundId);
-            
-            // Limpar a seleção
-            selectedCompound = null;
-            selectedSolvent = null;
-        }
     }
 }

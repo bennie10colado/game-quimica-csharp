@@ -21,7 +21,7 @@ public class SubstanceSolution : MonoBehaviour
         this.solutionName = solutionName;
         this.color = color;
         this.state = state;
-        this.density = density;
+        this.density = density; 
         this.solubilityResult = solubilityResult;
     }
     

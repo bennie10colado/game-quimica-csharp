@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 652628185167473645}
   - component: {fileID: 4512961372641797192}
   - component: {fileID: 1821060896987762818}
-  - component: {fileID: -6533985439632632056}
-  m_Layer: 0
+  - component: {fileID: 5098792405659287252}
+  - component: {fileID: 1522900661278481209}
+  - component: {fileID: 8943313419143938140}
+  m_Layer: 6
   m_Name: BottleObjectSolutionPrefabInst
-  m_TagString: Untagged
+  m_TagString: Solution
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +88,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-6533985439632632056
+--- !u!114 &5098792405659287252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,6 +97,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 163617556293284183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4dff4f46da73274597f250a0eca1487, type: 3}
+  m_Script: {fileID: 11500000, guid: afe24d0bcdde36e4ea4fa5f26dccb0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickEventsLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1522900661278481209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163617556293284183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &8943313419143938140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163617556293284183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a32a1e472275b842a643418d356efcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
