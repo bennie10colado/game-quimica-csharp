@@ -28,7 +28,6 @@ public class BottleObjectSolvent : MonoBehaviour
         GetComponent<Renderer>().material = myMaterial;
 
         GetComponent<Renderer>().material.color = color;
-        Debug.Log("BottleObjectSolvent configurado com " + compoundName);
     }
 
     // Getters

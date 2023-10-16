@@ -28,6 +28,8 @@ public class BottleObjectCompound : MonoBehaviour
             myMaterial.SetColor("_Color", color);
         }
         GetComponent<Renderer>().material = myMaterial;
+        GetComponent<Renderer>().material.color = color;
+
     }
 
     // Getters

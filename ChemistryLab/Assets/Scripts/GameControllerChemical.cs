@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameControllerChemical : MonoBehaviour
@@ -25,8 +26,9 @@ public class GameControllerChemical : MonoBehaviour
 
         ConfiguratingCompoundBottlesInGUI();
         ConfiguratingSolventBottlesInGUI();
-        
+
         //InstantiateSolutionsBottlesInGUI();
+        //DebugSolutionsList();
     }
 
     void ConfiguratingCompoundBottlesInGUI()
@@ -37,7 +39,7 @@ public class GameControllerChemical : MonoBehaviour
             BottleObjectCompound bottleComp = bottles_compounds[i].GetComponent<BottleObjectCompound>();
             if (bottleComp != null)
             {
-                Debug.Log("Configurando BottleObjectCompound com " + substanceManager.compoundsList[i].GetCompoundName());
+                //Debug.Log("Configurando BottleObjectCompound com " + substanceManager.compoundsList[i].GetCompoundName());
                 bottleComp.ConfigureCompound(substanceManager.compoundsList[i]);
                 Debug.Log(bottleComp.GetInfo());
             }
@@ -53,7 +55,7 @@ public class GameControllerChemical : MonoBehaviour
             {
                 //Debug.Log("Configurando BottleObjectSolvent com " + substanceManager.solventsList[i].GetCompoundName());
                 bottleSol.ConfigureSolvent(substanceManager.solventsList[i]);
-                //Debug.Log(bottleSol.GetInfo());
+                Debug.Log(bottleSol.GetInfo());
             }
         }
     }
@@ -88,4 +90,48 @@ public class GameControllerChemical : MonoBehaviour
             }
         }
     }
+
+    private void DebugSolutionsList()
+    {
+        if (substanceManager && substanceManager.solutionsList != null)
+        {
+            foreach (var solution in substanceManager.solutionsList)
+            {
+                Debug.Log($"Solution: {solution.GetSolutionName()} - SolventId: {solution.GetSolventId()} - CompoundId: {solution.GetCompoundId()}");
+            }
+        }
+        else
+        {
+            Debug.LogError("SubstanceManager ou solutionsList é null.");
+        }
+    }
+
+    public void PerformReaction(int solventId, int compoundId)
+    {
+        SubstanceSolution result = FindReactionResult(solventId, compoundId);
+        if (result?.GetSolutionName() != null)
+        {
+            Debug.Log("Reação realizada: " + result.GetSolutionName() + " E seu resultado de solubilidade é: " + result.GetSolubilityResult());
+
+            //outras logicas de mistura
+        }
+        else
+        {
+            Debug.Log("Reação não encontrada para solventeId: " + solventId + " e compoundId: " + compoundId);
+        }
+    }
+
+    private SubstanceSolution FindReactionResult(int solventId, int compoundId)
+    {
+        foreach (SubstanceSolution solution in substanceManager.solutionsList)
+        {
+            if (solution.GetSolventId() == solventId && solution.GetCompoundId() == compoundId)
+            {
+                return solution;
+            }
+        }
+        return null;
+    }
+
+
 }
