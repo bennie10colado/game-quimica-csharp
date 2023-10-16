@@ -18,7 +18,7 @@
 		{
 			"id": 3,
 			"compoundName": "Ácido propanoico",
-			"color": "#FFFFFF",
+			"color": "#e6ffff",
 			"state": "LIQUID",
 			"groupName": "SA",
 			"density": 1.05
@@ -26,7 +26,7 @@
 		{
 			"id": 4,
 			"compoundName": "Butan-1-amina",
-			"color": "#AAAAAB",
+			"color": "#e6ffff",
 			"state": "LIQUID",
 			"groupName": "SB",
 			"density": 0.87

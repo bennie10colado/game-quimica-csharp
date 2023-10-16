@@ -5,7 +5,7 @@
       "solventId": 1,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em Água",
-      "color": "#FFFFFF",
+      "color": "#e6ffE0",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -15,7 +15,7 @@
       "solventId": 2,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em Éter dietílico",
-      "color": "#FFFFFF",
+      "color": "#e6ffff",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Soluble"
@@ -25,7 +25,7 @@
       "solventId": 3,
       "compoundId": 1,
       "solutionName": "Solução de Etanoato de etila em Tornassol",
-      "color": "#FFFFFF",
+      "color": "#e6ffffFb",
       "state": "LIQUID",
       "density": 0.902,
       "solubilityResult": "Incolor"
@@ -96,7 +96,7 @@
       "compoundId": 2,
       "solutionName": "Solução de Butanoato de sódio em Éter dietílico",
       "color": "#FFFFFF",
-      "state": "SOLID",
+      "state": "SOLID_LIQUID",
       "density": 1.055,
       "solubilityResult": "InsolubleBelow"
     },

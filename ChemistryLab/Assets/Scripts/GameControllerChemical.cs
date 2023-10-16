@@ -94,7 +94,7 @@ public class GameControllerChemical : MonoBehaviour
 
     void InstantiateSolutionBottleInGUI(SubstanceSolution solution)
     {
-        float offsetX = 0.7f;
+        float offsetX = -0.7f;
 
         Vector3 positionOffset = new Vector3(currentSolutionCount * offsetX, 0, 0);
         GameObject newSolutionObject = Instantiate(solutionPrefab, solutionParent.position + positionOffset, Quaternion.identity, solutionParent);

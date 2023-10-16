@@ -99,7 +99,7 @@ public class ClickingChemicalObject : MonoBehaviour
 
     private IEnumerator PerformReaction(BottleObjectCompound selectedCompound, BottleObjectSolvent selectedSolvent)
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.01f); // TODO: remover coroutine posteriormente
 
         if (selectedCompound != null && selectedSolvent != null && gameController != null)
         {
