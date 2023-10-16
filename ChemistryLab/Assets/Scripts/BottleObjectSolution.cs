@@ -9,6 +9,17 @@ public class BottleSolutionObject : MonoBehaviour
     public void ConfigureSolution(SubstanceSolution solution)
     {
         this.solution = solution;
+        ApplyColorToMaterial(solution.GetColor());
+
+    }
+
+    public void ApplyColorToMaterial(Color color)
+    {
+        Renderer renderer = this.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = color;
+        }
     }
 
     // Getters

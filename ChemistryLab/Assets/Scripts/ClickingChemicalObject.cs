@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class ClickingChemicalObject : MonoBehaviour
@@ -40,7 +39,7 @@ public class ClickingChemicalObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Se o botão esquerdo do mouse foi pressionado
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -49,39 +48,45 @@ public class ClickingChemicalObject : MonoBehaviour
             {
                 BottleObjectCompound compound = hit.collider.GetComponent<BottleObjectCompound>();
                 BottleObjectSolvent solvent = hit.collider.GetComponent<BottleObjectSolvent>();
+                BottleSolutionObject solution = hit.collider.GetComponent<BottleSolutionObject>();
 
                 if (compound != null)
                 {
-                    Debug.Log("Composto atual: " + compound.GetInfo());
+                    //Debug.Log("Composto atual: " + compound.GetInfo());
                     lastSelectedCompound = compound;
                     Debug.Log(lastSelectedCompound.GetCompoundName() + " selecionado.");
                 }
                 else if (solvent != null)
                 {
-                    Debug.Log("Solvente atual: " + solvent.GetInfo());
+                    //Debug.Log("Solvente atual: " + solvent.GetInfo());
                     lastSelectedSolvent = solvent;
                     Debug.Log(lastSelectedSolvent.GetCompoundName() + " selecionado.");
                 }
+                else if (solution != null)
+                {
+                    Debug.Log("Informações da Solução: " + solution.GetInfo());
+                }
                 else
                 {
-                    Debug.Log("Clique em local não registrado. Possivelmente em espaço em branco.");
+                    Debug.Log("Clique em local não registrado. Possivelmente espaço em branco/vazio.");
                 }
 
                 if (lastSelectedCompound?.GetCompoundName() != null && lastSelectedSolvent?.GetCompoundName() != null)
                 {
-                    PerformReaction(lastSelectedCompound, lastSelectedSolvent);
+                    StartCoroutine(PerformReaction(lastSelectedCompound, lastSelectedSolvent));
 
                     lastSelectedCompound = null;
                     lastSelectedSolvent = null;
                 }
+
+
             }
         }
     }
 
-
     private void OnMouseEnter()
     {
-        if (gameObject.CompareTag("Solvent") || gameObject.CompareTag("Compound"))
+        if (gameObject.CompareTag("Solvent") || gameObject.CompareTag("Compound") || gameObject.CompareTag("Solution"))
         {
             isMouseOverObject = true;
         }
@@ -92,8 +97,10 @@ public class ClickingChemicalObject : MonoBehaviour
         isMouseOverObject = false;
     }
 
-    private void PerformReaction(BottleObjectCompound selectedCompound, BottleObjectSolvent selectedSolvent)
+    private IEnumerator PerformReaction(BottleObjectCompound selectedCompound, BottleObjectSolvent selectedSolvent)
     {
+        yield return new WaitForSeconds(0.01f);
+
         if (selectedCompound != null && selectedSolvent != null && gameController != null)
         {
             Debug.Log("Solvent ID: " + selectedSolvent.GetId() + ", Compound ID: " + selectedCompound.GetId());
@@ -115,6 +122,4 @@ public class ClickingChemicalObject : MonoBehaviour
             Debug.LogError("SubstanceManager ou solutionsList é null.");
         }
     }
-
-
 }

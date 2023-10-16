@@ -16,6 +16,7 @@ public class GameControllerChemical : MonoBehaviour
     private SubstanceSolvent lastSelectedSolvent;
     private SubstanceCompound lastSelectedCompound;
 
+    private int currentSolutionCount = 0;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class GameControllerChemical : MonoBehaviour
             }
         }
     }
-    void InstantiateSolutionsBottlesInGUI()
+    void InstantiateAllSolutionsBottlesInGUI()
     {
         float offsetX = 0.7f;
 
@@ -91,6 +92,35 @@ public class GameControllerChemical : MonoBehaviour
         }
     }
 
+    void InstantiateSolutionBottleInGUI(SubstanceSolution solution)
+    {
+        float offsetX = 0.7f;
+
+        Vector3 positionOffset = new Vector3(currentSolutionCount * offsetX, 0, 0);
+        GameObject newSolutionObject = Instantiate(solutionPrefab, solutionParent.position + positionOffset, Quaternion.identity, solutionParent);
+
+        if (newSolutionObject != null)
+        {
+            BottleSolutionObject solutionObject = newSolutionObject.GetComponent<BottleSolutionObject>();
+            if (solutionObject)
+            {
+                solutionObject.ConfigureSolution(solution);
+                Debug.Log(solutionObject.GetInfo());
+            }
+            else
+            {
+                Debug.Log("Solution object does not have BottleSolutionObject component");
+            }
+            currentSolutionCount++;
+
+        }
+        else
+        {
+            Debug.Log("Solution object instantiation failed");
+        }
+    }
+
+
     private void DebugSolutionsList()
     {
         if (substanceManager && substanceManager.solutionsList != null)
@@ -113,13 +143,16 @@ public class GameControllerChemical : MonoBehaviour
         {
             Debug.Log("Reação realizada: " + result.GetSolutionName() + " E seu resultado de solubilidade é: " + result.GetSolubilityResult());
 
-            //outras logicas de mistura
+            //outras logicas p mistura
+
+            InstantiateSolutionBottleInGUI(result);
         }
         else
         {
             Debug.Log("Reação não encontrada para solventeId: " + solventId + " e compoundId: " + compoundId);
         }
     }
+
 
     private SubstanceSolution FindReactionResult(int solventId, int compoundId)
     {
