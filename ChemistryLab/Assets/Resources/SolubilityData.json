@@ -105,8 +105,8 @@
       "solventId": 3,
       "compoundId": 2,
       "solutionName": "Solução de Butanoato de sódio em Tornassol",
-      "color": "#FFFFFF",
-      "state": "SOLID",
+      "color": "#00FF",
+      "state": "SOLID_LIQUID",
       "density": 1.055,
       "solubilityResult": "A"
     },

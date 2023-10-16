@@ -34,7 +34,7 @@
 		{
 			"id": 5,
 			"compoundName": "Ácido oleico",
-			"color": "#000000",
+			"color": "#FF0",
 			"state": "LIQUID",
 			"groupName": "A1",
 			"density": 0.89
