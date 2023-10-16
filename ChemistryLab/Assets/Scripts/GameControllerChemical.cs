@@ -143,9 +143,8 @@ public class GameControllerChemical : MonoBehaviour
         {
             Debug.Log("Reação realizada: " + result.GetSolutionName() + " E seu resultado de solubilidade é: " + result.GetSolubilityResult());
 
-            //outras logicas p mistura
-
             InstantiateSolutionBottleInGUI(result);
+            //possiveis outras logicas p mistura
         }
         else
         {

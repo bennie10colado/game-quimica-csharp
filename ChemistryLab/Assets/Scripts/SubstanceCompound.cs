@@ -10,7 +10,7 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
     private PhysicalState state;
     private GroupName groupName;
     private float density;
-    private Dictionary<SubstanceSolvent, SolubilityResults> solubilityTable;
+    //private Dictionary<SubstanceSolvent, SolubilityResults> solubilityTable;
 
     //construtor pois não estava sendo possivel instanciar o objeto SubstanceCompound na Reaction 
     public SubstanceCompound(int id, string compoundName, Color color, PhysicalState state, float density, GroupName groupName)
@@ -21,13 +21,13 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
         this.state = state;
         this.density = density;
         this.groupName = groupName;
-        this.solubilityTable = new Dictionary<SubstanceSolvent, SolubilityResults>();
+        //this.solubilityTable = new Dictionary<SubstanceSolvent, SolubilityResults>();
     }
 
-    public void AddSolubilityInfo(SubstanceSolvent solvent, SolubilityResults isSoluble)
-    {
-        solubilityTable[solvent] = isSoluble;
-    }
+    //public void AddSolubilityInfo(SubstanceSolvent solvent, SolubilityResults isSoluble)
+    //{
+    //    solubilityTable[solvent] = isSoluble;
+    //}
 
     public int GetId()
     {
