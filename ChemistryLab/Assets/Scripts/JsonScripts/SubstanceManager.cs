@@ -218,6 +218,68 @@ public class SubstanceManager : MonoBehaviour
         File.WriteAllText(solventsJsonFilePath, json);
     }
 
+    public void AddSolubility(SolubilityData newSolubilityData)
+    {
+        SubstanceSolvent solvent = FindSolventById(newSolubilityData.solventId);
+        SubstanceCompound compound = FindCompoundById(newSolubilityData.compoundId);
+
+        if (solvent.GetCompoundName() == null)
+        {
+            Debug.LogError($"Erro: Não foi possível adicionar a solubilidade porque o solvente com ID {newSolubilityData.solventId} não existe!");
+            return;
+        }
+        
+        if (compound.GetCompoundName() == null)
+        {
+            Debug.LogError($"Erro: Não foi possível adicionar a solubilidade porque o composto com ID {newSolubilityData.compoundId} não existe!");
+            return;
+        }
+
+        if (SolubilityIdExists(newSolubilityData.id))
+        {
+            Debug.LogError($"Erro: O ID de solubilidade {newSolubilityData.id} já está em uso!");
+            return;
+        }
+
+        if (SolubilityCombinationExists(newSolubilityData.solventId, newSolubilityData.compoundId))
+        {
+            Debug.LogError($"Erro: Uma Solução de solubilidade para o solvente com ID {newSolubilityData.solventId} e o composto com ID {newSolubilityData.compoundId} já existe no banco de dados!");
+            return;
+        }
+
+        SubstanceSolution newSolubility = ConvertDataToSubstanceSolution(newSolubilityData);
+        solutionsList.Add(newSolubility);
+        solutionsCollection.solutions.Add(newSolubilityData);
+        SaveSolubilities();
+        Debug.Log($"{newSolubilityData.solutionName} foi adicionado com sucesso!");
+    }
+
+    bool SolubilityCombinationExists(int solventId, int compoundId)
+    {
+        foreach (SubstanceSolution solubility in solutionsList)
+        {
+            if (solubility.GetSolventId() == solventId && solubility.GetCompoundId() == compoundId)
+                return true;
+        }
+        return false;
+    }
+
+    bool SolubilityIdExists(int solubilityId)
+    {
+        foreach (SubstanceSolution solubility in solutionsList)
+        {
+            if (solubility.GetId() == solubilityId)
+                return true;
+        }
+        return false;
+    }
+
+    void SaveSolubilities()
+    {
+        string json = JsonUtility.ToJson(solutionsCollection, true);
+        File.WriteAllText(solutionsJsonFilePath, json);
+    }
+
     public SubstanceSolvent FindSolventByName(string name)
     {
         return solventsList.Find(solvent => solvent.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));

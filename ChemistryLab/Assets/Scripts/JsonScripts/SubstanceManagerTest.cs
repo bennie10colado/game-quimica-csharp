@@ -16,6 +16,7 @@ public class SubstanceManagerTest : MonoBehaviour
 
         //TestAddCompound();
         //TestAddSolvent();
+        TestAddSolubility();
     }
 
     void TestAddCompound()
@@ -38,7 +39,7 @@ public class SubstanceManagerTest : MonoBehaviour
     {
         SolventData newSolvent = new SolventData
         {
-            id = 444444, 
+            id = 444444,
             compoundName = "Álcool Etílico",
             color = "#C2C2C2",
             state = "Liquid",
@@ -47,6 +48,24 @@ public class SubstanceManagerTest : MonoBehaviour
 
         substanceManager.AddSolvent(newSolvent);
         //Debug.Log("Solvente adicionado com sucesso!");
+    }
+
+    void TestAddSolubility()
+    {
+        SolubilityData newSolubility = new SolubilityData
+        {
+            id = 55,
+            solventId = 8, 
+            compoundId = 10, 
+            solutionName = "Solução Teste",
+            color = "#FFFFFF",
+            state = "Liquid",
+            density = 1.0f,
+            solubilityResult = "Soluble"
+        };
+
+        substanceManager.AddSolubility(newSolubility);
+        Debug.Log("Solubilidade adicionada com sucesso!");
     }
 
 }
