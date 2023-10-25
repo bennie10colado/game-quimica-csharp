@@ -14,9 +14,18 @@ public class SubstanceManagerTest : MonoBehaviour
             return;
         }
 
+        // Testes de Adição
         //TestAddCompound();
         //TestAddSolvent();
-        TestAddSolubility();
+        //TestAddSolubility();
+
+        // Testes de Busca
+        TestFindSolventByName();
+        TestFindSolventById();
+        TestFindCompoundByName();
+        TestFindCompoundById();
+        TestFindSolutionByName();
+        TestFindSolutionById();
     }
 
     void TestAddCompound()
@@ -55,8 +64,8 @@ public class SubstanceManagerTest : MonoBehaviour
         SolubilityData newSolubility = new SolubilityData
         {
             id = 55,
-            solventId = 8, 
-            compoundId = 10, 
+            solventId = 8,
+            compoundId = 10,
             solutionName = "Solução Teste",
             color = "#FFFFFF",
             state = "Liquid",
@@ -67,6 +76,74 @@ public class SubstanceManagerTest : MonoBehaviour
         substanceManager.AddSolubility(newSolubility);
         Debug.Log("Solubilidade adicionada com sucesso!");
     }
+
+    void TestFindSolventByName()
+    {
+        string solventName = "Éter dietílico";
+        SubstanceSolvent foundSolvent = substanceManager.FindSolventByName(solventName);
+
+        if (foundSolvent.GetCompoundName() != null)
+            Debug.Log("Solvente encontrado: " + foundSolvent.GetCompoundName());
+        else
+            Debug.LogError("Solvente não encontrado: " + solventName);
+    }
+
+    void TestFindSolventById()
+    {
+        int solventId = 1;
+        SubstanceSolvent foundSolvent = substanceManager.FindSolventById(solventId);
+
+        if (foundSolvent.GetCompoundName() != null)
+            Debug.Log("Solvente encontrado: " + foundSolvent.GetCompoundName());
+        else
+            Debug.LogError("Solvente não encontrado com ID: " + solventId);
+    }
+
+    void TestFindCompoundByName()
+    {
+        string compoundName = "Cicloexanona";
+        SubstanceCompound foundCompound = substanceManager.FindCompoundByName(compoundName);
+
+        if (foundCompound.GetCompoundName() != null)
+            Debug.Log("Composto encontrado: " + foundCompound.GetCompoundName());
+        else
+            Debug.LogError("Composto não encontrado: " + compoundName);
+    }
+
+    void TestFindCompoundById()
+    {
+        int compoundId = 2; 
+        SubstanceCompound foundCompound = substanceManager.FindCompoundById(compoundId);
+
+        if (foundCompound.GetCompoundName() != null)
+            Debug.Log("Composto encontrado: " + foundCompound.GetCompoundName());
+        else
+            Debug.LogError("Composto não encontrado com ID: " + compoundId);
+    }
+
+    void TestFindSolutionByName()
+    {
+        string solutionName = "Solução de Etanoato de etila em Água"; 
+        SubstanceSolution foundSolution = substanceManager.FindSolutionByName(solutionName);
+
+        if (foundSolution.GetSolutionName() != null)
+            Debug.Log("Solução encontrada: " + foundSolution.GetSolutionName());
+        else
+            Debug.LogError("Solução não encontrada: " + solutionName);
+    }
+
+    void TestFindSolutionById()
+    {
+        int solutionId = 3; 
+        SubstanceSolution foundSolution = substanceManager.FindSolutionById(solutionId);
+
+        if (foundSolution.GetSolutionName() != null)
+            Debug.Log("Solução encontrada: " + foundSolution.GetSolutionName());
+        else
+            Debug.LogError("Solução não encontrada com ID: " + solutionId);
+    }
+
+    
 
 }
 

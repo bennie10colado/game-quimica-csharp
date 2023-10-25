@@ -52,16 +52,6 @@ public class SubstanceManager : MonoBehaviour
             SubstanceSolvent solvent = ConvertDataToSubstanceSolvent(solventData);
             solventsList.Add(solvent);
         }
-
-        /*print de cada elemento da lista
-        //foreach (var solvent in solventsList)
-        //{
-        //if (!solvent) //por algum motivo um objeto completo é tratado como nulo nessa verificacao
-        //{
-        //Debug.Log("Solvente: " + solvent.GetCompoundName() + ", Densidade: " + solvent.GetDensity());
-        //}
-        //}*/
-
     }
 
     void LoadCompounds()
@@ -74,14 +64,6 @@ public class SubstanceManager : MonoBehaviour
             SubstanceCompound compound = ConvertDataToSubstanceCompound(compoundData);
             compoundsList.Add(compound);
         }
-
-        /*//foreach (var compound in compoundsList)
-        //{
-        //if (!compound)
-        //{
-        //Debug.Log("Composto Químico: " + compound.GetCompoundName() + " " + "Id: " + compound.GetId() + ", Densidade: " + compound.GetDensity() + " " + "Cor: " + compound.GetColor() + " " + "Grupo: " + compound.GetGroupName() + " " + "Estado físico: " + compound.GetState() + " ");
-        //}
-        // }*/
     }
 
     void LoadSolubility()
@@ -94,13 +76,7 @@ public class SubstanceManager : MonoBehaviour
             SubstanceSolution solution = ConvertDataToSubstanceSolution(solubilityData);
             solutionsList.Add(solution);
         }
-
-        /*//foreach (var sol in solutionsList)
-        //{
-        //Debug.Log("Solução: " + sol.GetSolutionName() + " " + "Id: " + sol.GetId() + ", Densidade: " + sol.GetDensity() + ", Cor: " + sol.GetColor() + ", Estado físico: " + sol.GetState() + ", Nome do solvente que está presente na reação: " + sol.GetSolvent().GetCompoundName() + ", Nome do composto quimico organico que está presente na reação: " + sol.GetCompound().GetCompoundName() + ", E o resultado da sua solução é: " + sol.GetSolubilityResult());
-        //}*/
     }
-
 
     public SubstanceSolvent ConvertDataToSubstanceSolvent(SolventData solventData)
     {
@@ -228,7 +204,7 @@ public class SubstanceManager : MonoBehaviour
             Debug.LogError($"Erro: Não foi possível adicionar a solubilidade porque o solvente com ID {newSolubilityData.solventId} não existe!");
             return;
         }
-        
+
         if (compound.GetCompoundName() == null)
         {
             Debug.LogError($"Erro: Não foi possível adicionar a solubilidade porque o composto com ID {newSolubilityData.compoundId} não existe!");
@@ -317,6 +293,68 @@ public class SubstanceManager : MonoBehaviour
         return solutionsList.Find(solution => solution.GetId() == id);
     }
 
+    public void PrintAllSolvents()
+    {
+        foreach (var solvent in solventsList)
+        {
+            Debug.Log("Solvente: " + solvent.GetCompoundName() + ", ID: " + solvent.GetId());
+        }
+    }
+
+    public void PrintAllCompounds()
+    {
+        foreach (var compound in compoundsList)
+        {
+            Debug.Log("Composto Químico: " + compound.GetCompoundName() + ", ID: " + compound.GetId());
+        }
+    }
+
+    public void PrintAllSolutions()
+    {
+        foreach (var solution in solutionsList)
+        {
+            Debug.Log("Solução: " + solution.GetSolutionName() + ", ID: " + solution.GetId());
+        }
+    }
+
+    public void PrintSolventDetails(int solventId)
+    {
+        SubstanceSolvent solvent = FindSolventById(solventId);
+        if (solvent.GetCompoundName() != null)
+        {
+            Debug.Log("Detalhes do Solvente: " + solvent.ToString());
+        }
+        else
+        {
+            Debug.LogError("Solvente não encontrado!");
+        }
+    }
+
+    public void PrintCompoundDetails(int compoundId)
+    {
+        SubstanceCompound compound = FindCompoundById(compoundId);
+        if (compound.GetCompoundName() != null)
+        {
+            Debug.Log("Detalhes do Composto Químico: " + compound.ToString());
+        }
+        else
+        {
+            Debug.LogError("Composto Químico não encontrado!");
+        }
+    }
+
+    public void PrintSolutionDetails(int solutionId)
+    {
+        SubstanceSolution solution = FindSolutionById(solutionId);
+        if (solution.GetSolutionName() != null)
+        {
+            Debug.Log("Detalhes da Solução: " + solution.ToString());
+        }
+        else
+        {
+            Debug.LogError("Solução não encontrada!");
+        }
+    }
 
 
 }
