@@ -10,7 +10,6 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
     private PhysicalState state;
     private GroupName groupName;
     private float density;
-    //private Dictionary<SubstanceSolvent, SolubilityResults> solubilityTable;
 
     //construtor pois não estava sendo possivel instanciar o objeto SubstanceCompound na Reaction 
     public SubstanceCompound(int id, string compoundName, Color color, PhysicalState state, float density, GroupName groupName)
@@ -21,13 +20,8 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
         this.state = state;
         this.density = density;
         this.groupName = groupName;
-        //this.solubilityTable = new Dictionary<SubstanceSolvent, SolubilityResults>();
     }
 
-    //public void AddSolubilityInfo(SubstanceSolvent solvent, SolubilityResults isSoluble)
-    //{
-    //    solubilityTable[solvent] = isSoluble;
-    //}
 
     public int GetId()
     {
@@ -59,10 +53,8 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
         return groupName;
     }
 
-    //public Dictionary<SubstanceSolvent, SolubilityResults> GetSolubilityTable()
-    //{
-    //    return solubilityTable;
-    //}
-    
-    //obs: pode-se criar no futuro um método para analisar a solubilidade do composto com um solvente, ou com outros compostos.
+    public string GetInfo()
+    {
+        return $"ID: {GetId()}, Nome: {GetCompoundName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}, Grupo: {GetGroupName()}";
+    }
 }

@@ -297,7 +297,7 @@ public class SubstanceManager : MonoBehaviour
     {
         foreach (var solvent in solventsList)
         {
-            Debug.Log("Solvente: " + solvent.GetCompoundName() + ", ID: " + solvent.GetId());
+            PrintSolventDetails(solvent.GetId());
         }
     }
 
@@ -305,7 +305,7 @@ public class SubstanceManager : MonoBehaviour
     {
         foreach (var compound in compoundsList)
         {
-            Debug.Log("Composto Químico: " + compound.GetCompoundName() + ", ID: " + compound.GetId());
+            PrintCompoundDetails(compound.GetId());
         }
     }
 
@@ -313,7 +313,7 @@ public class SubstanceManager : MonoBehaviour
     {
         foreach (var solution in solutionsList)
         {
-            Debug.Log("Solução: " + solution.GetSolutionName() + ", ID: " + solution.GetId());
+            PrintSolutionDetails(solution.GetId());
         }
     }
 
@@ -322,7 +322,7 @@ public class SubstanceManager : MonoBehaviour
         SubstanceSolvent solvent = FindSolventById(solventId);
         if (solvent.GetCompoundName() != null)
         {
-            Debug.Log("Detalhes do Solvente: " + solvent.ToString());
+            Debug.Log("Detalhes do Solvente: " + solvent.GetInfo());
         }
         else
         {
@@ -335,7 +335,7 @@ public class SubstanceManager : MonoBehaviour
         SubstanceCompound compound = FindCompoundById(compoundId);
         if (compound.GetCompoundName() != null)
         {
-            Debug.Log("Detalhes do Composto Químico: " + compound.ToString());
+            Debug.Log("Detalhes do Composto Químico: " + compound.GetInfo());
         }
         else
         {
@@ -348,7 +348,7 @@ public class SubstanceManager : MonoBehaviour
         SubstanceSolution solution = FindSolutionById(solutionId);
         if (solution.GetSolutionName() != null)
         {
-            Debug.Log("Detalhes da Solução: " + solution.ToString());
+            Debug.Log("Detalhes da Solução: " + solution.GetInfo());
         }
         else
         {

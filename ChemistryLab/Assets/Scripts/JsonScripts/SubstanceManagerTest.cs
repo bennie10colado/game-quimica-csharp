@@ -10,7 +10,7 @@ public class SubstanceManagerTest : MonoBehaviour
     {
         if (substanceManager == null)
         {
-            Debug.LogError("SubstanceManager não está definido! Por favor, atribua no Inspector.");
+            Debug.LogError("SubstanceManager não está definido. Atribuir no Inspector!");
             return;
         }
 

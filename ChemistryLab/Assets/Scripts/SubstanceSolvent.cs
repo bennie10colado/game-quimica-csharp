@@ -42,10 +42,14 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
     {
         return density;
     }
-    
+
     public GroupName GetGroupName()
     {
         return groupName;
     }
-    
+
+    public string GetInfo()
+    {
+        return $"ID: {GetId()}, Nome: {GetCompoundName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}, Grupo: {GetGroupName()}";
+    }
 }

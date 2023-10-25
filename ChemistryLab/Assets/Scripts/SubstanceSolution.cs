@@ -33,5 +33,8 @@ public class SubstanceSolution : MonoBehaviour
     public PhysicalState GetState() => state;
     public float GetDensity() => density;
     public SolubilityResults GetSolubilityResult() => solubilityResult;
-
+    public string GetInfo()
+    {
+        return $"ID: {GetId()}, Solvent ID: {GetSolventId()}, Compound ID: {GetCompoundId()}, Nome da Solução: {GetSolutionName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}, Resultado de Solubilidade: {GetSolubilityResult()}";
+    }
 }
