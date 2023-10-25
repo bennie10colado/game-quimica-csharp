@@ -163,5 +163,23 @@ public class SubstanceManagerTest : MonoBehaviour
         substanceManager.PrintAllSolutions();
     }
 
+    void TestUpdateCompound()
+    {
+        Debug.Log("Atualizando Composto...");
+        substanceManager.UpdateCompound(111111, "Teste Atualizado", "#222222", "Solid", 2.0f, "S2");
+    }
+
+    void TestUpdateSolvent()
+    {
+        Debug.Log("Atualizando Solvente...");
+        substanceManager.UpdateSolvent(444444, "Água", "#FFFFFF", "Liquid", 1.0f);
+    }
+
+    void TestUpdateSolution()
+    {
+        Debug.Log("Atualizando Solução...");
+        substanceManager.UpdateSolution(55, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Gas", 0.5f, "Insoluble");
+    }
+
 }
 

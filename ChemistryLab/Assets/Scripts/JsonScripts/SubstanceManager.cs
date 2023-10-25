@@ -356,5 +356,59 @@ public class SubstanceManager : MonoBehaviour
         }
     }
 
+    public void UpdateCompound(int id, string compoundName, string color, string state, float density, string groupName)
+    {
+        Color parsedColor = ConvertToColor(color);
+        PhysicalState physicalState = ConvertToPhysicalState(state);
+        GroupName parsedGroupName = ConvertToGroupName(groupName);
+
+        SubstanceCompound compound = FindCompoundById(id);
+        if (compound.GetCompoundName() != null)
+        {
+            Debug.Log(compound.GetInfo());
+            compound.UpdateCompound(compound.GetId(), compound.GetCompoundName(), compound.GetColor(), compound.GetState(), compound.GetDensity(), compound.GetGroupName());
+            Debug.Log("Composto atualizado com sucesso!");
+            Debug.Log(compound.GetInfo());
+        }
+        else
+        {
+            Debug.LogError("Composto não encontrado!");
+        }
+    }
+
+    public void UpdateSolvent(int id, string compoundName, string color, string state, float density)
+    {
+        Color parsedColor = ConvertToColor(color);
+        PhysicalState physicalState = ConvertToPhysicalState(state);
+
+        SubstanceSolvent solvent = FindSolventById(id);
+        if (solvent.GetCompoundName() != null)
+        {
+            solvent.UpdateSolvent(solvent.GetId(), solvent.GetCompoundName(), solvent.GetColor(), solvent.GetState(), solvent.GetDensity());
+            Debug.Log("Solvente atualizado com sucesso!");
+        }
+        else
+        {
+            Debug.LogError("Solvente não encontrado!");
+        }
+    }
+
+    public void UpdateSolution(int id, int solventId, int compoundId, string solutionName, string color, string state, float density, string solubilityResult)
+    {
+        Color parsedColor = ConvertToColor(color);
+        PhysicalState physicalState = ConvertToPhysicalState(state);
+        SolubilityResults solubility = ConvertToSolubilityResults(solubilityResult);
+
+        SubstanceSolution solution = FindSolutionById(id);
+        if (solution.GetSolutionName() != null)
+        {
+            solution.UpdateSolution(solution.GetId(), solventId, compoundId, solutionName, parsedColor, physicalState, density, solubility);
+            Debug.Log("Solução atualizada com sucesso!");
+        }
+        else
+        {
+            Debug.LogError("Solução não encontrada!");
+        }
+    }
 
 }

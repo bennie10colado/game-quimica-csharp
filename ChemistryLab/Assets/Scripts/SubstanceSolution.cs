@@ -37,4 +37,15 @@ public class SubstanceSolution : MonoBehaviour
     {
         return $"ID: {GetId()}, Solvent ID: {GetSolventId()}, Compound ID: {GetCompoundId()}, Nome da Solução: {GetSolutionName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}, Resultado de Solubilidade: {GetSolubilityResult()}";
     }
+    public void UpdateSolution(int id, int solventId, int compoundId, string solutionName, Color color, PhysicalState state, float density, SolubilityResults solubilityResult)
+    {
+        this.id = id;
+        this.idSolvent = solventId;
+        this.idCompound = compoundId;
+        this.solutionName = solutionName;
+        this.color = color;
+        this.state = state;
+        this.density = density;
+        this.solubilityResult = solubilityResult;
+    }
 }

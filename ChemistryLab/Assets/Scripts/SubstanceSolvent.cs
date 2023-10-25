@@ -52,4 +52,14 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
     {
         return $"ID: {GetId()}, Nome: {GetCompoundName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}, Grupo: {GetGroupName()}";
     }
+
+    public void UpdateSolvent(int id, string name, Color color, PhysicalState state, float density)
+    {
+        this.idSolvent = id;
+        this.compoundName = name;
+        this.color = color;
+        this.state = state;
+        this.density = density;
+    }
+
 }

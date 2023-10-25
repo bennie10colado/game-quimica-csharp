@@ -11,7 +11,6 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
     private GroupName groupName;
     private float density;
 
-    //construtor pois não estava sendo possivel instanciar o objeto SubstanceCompound na Reaction 
     public SubstanceCompound(int id, string compoundName, Color color, PhysicalState state, float density, GroupName groupName)
     {
         this.idCompound = id;
@@ -21,7 +20,6 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
         this.density = density;
         this.groupName = groupName;
     }
-
 
     public int GetId()
     {
@@ -57,4 +55,16 @@ public class SubstanceCompound : MonoBehaviour, IChemicalCompound
     {
         return $"ID: {GetId()}, Nome: {GetCompoundName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}, Grupo: {GetGroupName()}";
     }
+
+    public void UpdateCompound(int id, string name, Color color, PhysicalState state, float density, GroupName groupName)
+    {
+        this.idCompound = id;
+        this.compoundName = name;
+        this.color = color;
+        this.state = state;
+        this.density = density;
+        this.groupName = groupName;
+    }
+
+
 }
