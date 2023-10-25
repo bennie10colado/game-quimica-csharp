@@ -31,6 +31,11 @@ public class SubstanceManagerTest : MonoBehaviour
         //TestPrintAllCompounds();
         //TestPrintAllSolvents();
         //TestPrintAllSolutions();
+
+        // Testes de Atualização
+        TestUpdateCompound();
+        TestUpdateSolvent();
+        TestUpdateSolution();
     }
 
     void TestAddCompound()
@@ -46,14 +51,13 @@ public class SubstanceManagerTest : MonoBehaviour
         };
 
         substanceManager.AddCompound(newCompound);
-        //Debug.Log("Composto adicionado com sucesso!");
     }
 
     void TestAddSolvent()
     {
         SolventData newSolvent = new SolventData
         {
-            id = 444444,
+            id = 44444,
             compoundName = "Álcool Etílico",
             color = "#C2C2C2",
             state = "Liquid",
@@ -61,15 +65,14 @@ public class SubstanceManagerTest : MonoBehaviour
         };
 
         substanceManager.AddSolvent(newSolvent);
-        //Debug.Log("Solvente adicionado com sucesso!");
     }
 
     void TestAddSolubility()
     {
         SolubilityData newSolubility = new SolubilityData
         {
-            id = 55,
-            solventId = 8,
+            id = 55555,
+            solventId = 7,
             compoundId = 10,
             solutionName = "Solução Teste",
             color = "#FFFFFF",
@@ -79,7 +82,6 @@ public class SubstanceManagerTest : MonoBehaviour
         };
 
         substanceManager.AddSolubility(newSolubility);
-        Debug.Log("Solubilidade adicionada com sucesso!");
     }
 
     void TestFindSolventByName()
@@ -166,19 +168,19 @@ public class SubstanceManagerTest : MonoBehaviour
     void TestUpdateCompound()
     {
         Debug.Log("Atualizando Composto...");
-        substanceManager.UpdateCompound(111111, "Teste Atualizado", "#222222", "Solid", 2.0f, "S2");
+        substanceManager.UpdateCompound(111111, "Composto Teste Atualizado", "#222222", "Solid", 2.0f, "S2");
     }
 
     void TestUpdateSolvent()
     {
         Debug.Log("Atualizando Solvente...");
-        substanceManager.UpdateSolvent(444444, "Água", "#FFFFFF", "Liquid", 1.0f);
+        substanceManager.UpdateSolvent(444444, "Água Oxigenada Atualizada", "#FFFFFF", "Liquid", 1.0f);
     }
 
     void TestUpdateSolution()
     {
         Debug.Log("Atualizando Solução...");
-        substanceManager.UpdateSolution(55, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Gas", 0.5f, "Insoluble");
+        substanceManager.UpdateSolution(56, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Liquid", 0.5f, "Insoluble");
     }
 
 }

@@ -129,6 +129,16 @@
             "state": "LIQUID",
             "density": 1.2999999523162842,
             "solubilityResult": "InsolubleAbove"
+        },
+        {
+            "id": 55555,
+            "solventId": 7,
+            "compoundId": 10,
+            "solutionName": "Solução Teste",
+            "color": "#FFFFFF",
+            "state": "Liquid",
+            "density": 1.0,
+            "solubilityResult": "Soluble"
         }
     ]
 }

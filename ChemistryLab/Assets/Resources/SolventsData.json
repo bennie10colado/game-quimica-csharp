@@ -55,6 +55,13 @@
             "color": "#FFFFFF",
             "state": "LIQUID",
             "density": 1.690000057220459
+        },
+        {
+            "id": 44444,
+            "compoundName": "Álcool Etílico",
+            "color": "#C2C2C2",
+            "state": "Liquid",
+            "density": 0.7889999747276306
         }
     ]
 }

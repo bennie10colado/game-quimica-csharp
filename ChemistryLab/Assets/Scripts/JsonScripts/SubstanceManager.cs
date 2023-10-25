@@ -366,7 +366,7 @@ public class SubstanceManager : MonoBehaviour
         if (compound.GetCompoundName() != null)
         {
             Debug.Log(compound.GetInfo());
-            compound.UpdateCompound(compound.GetId(), compound.GetCompoundName(), compound.GetColor(), compound.GetState(), compound.GetDensity(), compound.GetGroupName());
+            compound.UpdateCompound(compound.GetId(), compoundName, parsedColor, physicalState, density, parsedGroupName);
             Debug.Log("Composto atualizado com sucesso!");
             Debug.Log(compound.GetInfo());
         }
@@ -384,7 +384,7 @@ public class SubstanceManager : MonoBehaviour
         SubstanceSolvent solvent = FindSolventById(id);
         if (solvent.GetCompoundName() != null)
         {
-            solvent.UpdateSolvent(solvent.GetId(), solvent.GetCompoundName(), solvent.GetColor(), solvent.GetState(), solvent.GetDensity());
+            solvent.UpdateSolvent(solvent.GetId(), compoundName, parsedColor, physicalState, density);
             Debug.Log("Solvente atualizado com sucesso!");
         }
         else

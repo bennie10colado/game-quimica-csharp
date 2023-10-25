@@ -79,6 +79,14 @@
             "state": "LIQUID",
             "groupName": "I",
             "density": 1.2999999523162842
+        },
+        {
+            "id": 111111,
+            "compoundName": "Teste",
+            "color": "#111111",
+            "state": "Liquid",
+            "groupName": "S1",
+            "density": 1.0
         }
     ]
 }
