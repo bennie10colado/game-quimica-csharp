@@ -20,12 +20,17 @@ public class SubstanceManagerTest : MonoBehaviour
         //TestAddSolubility();
 
         // Testes de Busca
-        TestFindSolventByName();
-        TestFindSolventById();
-        TestFindCompoundByName();
-        TestFindCompoundById();
-        TestFindSolutionByName();
-        TestFindSolutionById();
+        //TestFindSolventByName();
+        //TestFindSolventById();
+        //TestFindCompoundByName();
+        //TestFindCompoundById();
+        //TestFindSolutionByName();
+        //TestFindSolutionById();
+
+        // Testes de Impressão
+        //TestPrintAllCompounds();
+        //TestPrintAllSolvents();
+        //TestPrintAllSolutions();
     }
 
     void TestAddCompound()
@@ -112,7 +117,7 @@ public class SubstanceManagerTest : MonoBehaviour
 
     void TestFindCompoundById()
     {
-        int compoundId = 2; 
+        int compoundId = 2;
         SubstanceCompound foundCompound = substanceManager.FindCompoundById(compoundId);
 
         if (foundCompound.GetCompoundName() != null)
@@ -123,7 +128,7 @@ public class SubstanceManagerTest : MonoBehaviour
 
     void TestFindSolutionByName()
     {
-        string solutionName = "Solução de Etanoato de etila em Água"; 
+        string solutionName = "Solução de Etanoato de etila em Água";
         SubstanceSolution foundSolution = substanceManager.FindSolutionByName(solutionName);
 
         if (foundSolution.GetSolutionName() != null)
@@ -134,7 +139,7 @@ public class SubstanceManagerTest : MonoBehaviour
 
     void TestFindSolutionById()
     {
-        int solutionId = 3; 
+        int solutionId = 3;
         SubstanceSolution foundSolution = substanceManager.FindSolutionById(solutionId);
 
         if (foundSolution.GetSolutionName() != null)
@@ -143,7 +148,20 @@ public class SubstanceManagerTest : MonoBehaviour
             Debug.LogError("Solução não encontrada com ID: " + solutionId);
     }
 
-    
+    void TestPrintAllCompounds()
+    {
+        substanceManager.PrintAllCompounds();
+    }
+
+    void TestPrintAllSolvents()
+    {
+        substanceManager.PrintAllSolvents();
+    }
+
+    void TestPrintAllSolutions()
+    {
+        substanceManager.PrintAllSolutions();
+    }
 
 }
 
