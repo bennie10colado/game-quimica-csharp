@@ -12,7 +12,7 @@ public class CompoundsCollection
 [System.Serializable]
 public class SolventsCollection
 {
-        public List<SolventData> solvents;
+    public List<SolventData> solvents;
 }
 
 [System.Serializable]
@@ -46,21 +46,21 @@ public class SubstanceManager : MonoBehaviour
     {
         string jsonTextSol = File.ReadAllText(solventsJsonFilePath);
         solventsCollection = JsonUtility.FromJson<SolventsCollection>(jsonTextSol);
-        
+
         foreach (var solventData in solventsCollection.solvents)
         {
             SubstanceSolvent solvent = ConvertDataToSubstanceSolvent(solventData);
             solventsList.Add(solvent);
         }
-        
-        //print de cada elemento da lista
-        foreach (var solvent in solventsList)
-        {
-            if (!solvent) //por algum motivo um objeto completo é tratado como nulo nessa verificacao
-            {
-                //Debug.Log("Solvente: " + solvent.GetCompoundName() + ", Densidade: " + solvent.GetDensity());
-            }
-        }
+
+        /*print de cada elemento da lista
+        //foreach (var solvent in solventsList)
+        //{
+        //if (!solvent) //por algum motivo um objeto completo é tratado como nulo nessa verificacao
+        //{
+        //Debug.Log("Solvente: " + solvent.GetCompoundName() + ", Densidade: " + solvent.GetDensity());
+        //}
+        //}*/
 
     }
 
@@ -68,38 +68,39 @@ public class SubstanceManager : MonoBehaviour
     {
         string jsonTextComp = File.ReadAllText(compoundsJsonFilePath);
         compoundsCollection = JsonUtility.FromJson<CompoundsCollection>(jsonTextComp);
-        
+
         foreach (var compoundData in compoundsCollection.compounds)
         {
             SubstanceCompound compound = ConvertDataToSubstanceCompound(compoundData);
             compoundsList.Add(compound);
         }
 
-        foreach (var compound in compoundsList)
-        {
-            if (!compound)
-            {
-                //Debug.Log("Composto Químico: " + compound.GetCompoundName() + " " + "Id: " + compound.GetId() + ", Densidade: " + compound.GetDensity() + " " + "Cor: " + compound.GetColor() + " " + "Grupo: " + compound.GetGroupName() + " " + "Estado físico: " + compound.GetState() + " ");
-            }
-        }
+        /*//foreach (var compound in compoundsList)
+        //{
+        //if (!compound)
+        //{
+        //Debug.Log("Composto Químico: " + compound.GetCompoundName() + " " + "Id: " + compound.GetId() + ", Densidade: " + compound.GetDensity() + " " + "Cor: " + compound.GetColor() + " " + "Grupo: " + compound.GetGroupName() + " " + "Estado físico: " + compound.GetState() + " ");
+        //}
+        // }*/
     }
 
     void LoadSolubility()
     {
         string jsonTextSolub = File.ReadAllText(solutionsJsonFilePath);
         solutionsCollection = JsonUtility.FromJson<SolutionsCollection>(jsonTextSolub);
-        
+
         foreach (var solubilityData in solutionsCollection.solutions)
         {
             SubstanceSolution solution = ConvertDataToSubstanceSolution(solubilityData);
             solutionsList.Add(solution);
         }
 
-        //foreach (var sol in solutionsList)
+        /*//foreach (var sol in solutionsList)
         //{
-            //Debug.Log("Solução: " + sol.GetSolutionName() + " " + "Id: " + sol.GetId() + ", Densidade: " + sol.GetDensity() + ", Cor: " + sol.GetColor() + ", Estado físico: " + sol.GetState() + ", Nome do solvente que está presente na reação: " + sol.GetSolvent().GetCompoundName() + ", Nome do composto quimico organico que está presente na reação: " + sol.GetCompound().GetCompoundName() + ", E o resultado da sua solução é: " + sol.GetSolubilityResult());
-        //}
+        //Debug.Log("Solução: " + sol.GetSolutionName() + " " + "Id: " + sol.GetId() + ", Densidade: " + sol.GetDensity() + ", Cor: " + sol.GetColor() + ", Estado físico: " + sol.GetState() + ", Nome do solvente que está presente na reação: " + sol.GetSolvent().GetCompoundName() + ", Nome do composto quimico organico que está presente na reação: " + sol.GetCompound().GetCompoundName() + ", E o resultado da sua solução é: " + sol.GetSolubilityResult());
+        //}*/
     }
+    
 
     public SubstanceSolvent ConvertDataToSubstanceSolvent(SolventData solventData)
     {
@@ -109,7 +110,7 @@ public class SubstanceManager : MonoBehaviour
     }
 
     public SubstanceCompound ConvertDataToSubstanceCompound(CompoundData compoundData)
-    {        
+    {
         Color color = ConvertToColor(compoundData.color);
         PhysicalState state = ConvertToPhysicalState(compoundData.state);
         GroupName groupName = ConvertToGroupName(compoundData.groupName);
@@ -127,7 +128,7 @@ public class SubstanceManager : MonoBehaviour
 
         return new SubstanceSolution(solubilityData.id, solubilityData.solventId, solubilityData.compoundId, solubilityData.solutionName, color, state, solubilityData.density, solubilityResult);
     }
-    
+
     public Color ConvertToColor(string colorStr)
     {
         //Debug.Log("Converting color string: " + colorStr);
@@ -167,6 +168,26 @@ public class SubstanceManager : MonoBehaviour
         throw new ArgumentException("Invalid SolubilityResults string: " + solubilityResultsStr);
     }
 
+    public void AddCompound(CompoundData newCompoundData)
+    {
+        string jsonTextComp = File.ReadAllText(compoundsJsonFilePath);
+        compoundsCollection = JsonUtility.FromJson<CompoundsCollection>(jsonTextComp);
+
+        compoundsCollection.compounds.Add(newCompoundData);
+        compoundsList.Add(ConvertDataToSubstanceCompound(newCompoundData));
+
+        SaveCompounds();
+        Debug.Log(newCompoundData.compoundName + "Foi adicionado com sucesso!!!!");
+
+    }
+
+    void SaveCompounds()
+    {
+        string jsonTextComp = JsonUtility.ToJson(compoundsCollection);
+        File.WriteAllText(compoundsJsonFilePath, jsonTextComp);
+    }
+
+
     public SubstanceSolvent FindSolventByName(string name)
     {
         return solventsList.Find(solvent => solvent.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -203,10 +224,7 @@ public class SubstanceManager : MonoBehaviour
     {
         return solutionsList.Find(solution => solution.GetId() == id);
     }
-    
 
 
 
-
-    
 }
