@@ -1,58 +1,60 @@
 {
-	"solvents": [{
-			"id": 1,
-			"compoundName": "Água",
-			"color": "#99FFFF",
-			"state": "LIQUID",
-			"density": 1.0
-		},
-		{
-			"id": 2,
-			"compoundName": "Éter dietílico",
-			"color": "#6699ff",
-			"state": "LIQUID",
-			"density": 0.7
-		}, {
-			"id": 3,
-			"compoundName": "Tornassol",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 1.01
-		},
-		{
-			"id": 4,
-			"compoundName": "NaOH 5%",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 1.2
-		},
-		{
-			"id": 5,
-			"compoundName": "NaHCO3 5%",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 1.1
-		},
-		{
-			"id": 6,
-			"compoundName": "HCl 5%",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 1.05
-		},
-		{
-			"id": 7,
-			"compoundName": "H2SO4 96%",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 1.84
-		},
-		{
-			"id": 8,
-			"compoundName": "H3PO4 85%",
-			"color": "#FFFFFF",
-			"state": "LIQUID",
-			"density": 1.69
-		}
-	]
+    "solvents": [
+        {
+            "id": 1,
+            "compoundName": "Água",
+            "color": "#99FFFF",
+            "state": "LIQUID",
+            "density": 1.0
+        },
+        {
+            "id": 2,
+            "compoundName": "Éter dietílico",
+            "color": "#6699ff",
+            "state": "LIQUID",
+            "density": 0.699999988079071
+        },
+        {
+            "id": 3,
+            "compoundName": "Tornassol",
+            "color": "#FFFFFF",
+            "state": "LIQUID",
+            "density": 1.0099999904632569
+        },
+        {
+            "id": 4,
+            "compoundName": "NaOH 5%",
+            "color": "#FFFFFF",
+            "state": "LIQUID",
+            "density": 1.2000000476837159
+        },
+        {
+            "id": 5,
+            "compoundName": "NaHCO3 5%",
+            "color": "#FFFFFF",
+            "state": "LIQUID",
+            "density": 1.100000023841858
+        },
+        {
+            "id": 6,
+            "compoundName": "HCl 5%",
+            "color": "#FFFFFF",
+            "state": "LIQUID",
+            "density": 1.0499999523162842
+        },
+        {
+            "id": 7,
+            "compoundName": "H2SO4 96%",
+            "color": "#FFFFFF",
+            "state": "LIQUID",
+            "density": 1.840000033378601
+        },
+        {
+            "id": 8,
+            "compoundName": "H3PO4 85%",
+            "color": "#FFFFFF",
+            "state": "LIQUID",
+            "density": 1.690000057220459
+        }
+    ]
 }

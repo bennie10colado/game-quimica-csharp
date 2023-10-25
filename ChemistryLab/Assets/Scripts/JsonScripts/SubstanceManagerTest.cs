@@ -15,6 +15,7 @@ public class SubstanceManagerTest : MonoBehaviour
         }
 
         //TestAddCompound();
+        //TestAddSolvent();
     }
 
     void TestAddCompound()
@@ -30,7 +31,23 @@ public class SubstanceManagerTest : MonoBehaviour
         };
 
         substanceManager.AddCompound(newCompound);
-        Debug.Log("Composto adicionado com sucesso!");
+        //Debug.Log("Composto adicionado com sucesso!");
     }
+
+    void TestAddSolvent()
+    {
+        SolventData newSolvent = new SolventData
+        {
+            id = 444444, 
+            compoundName = "Álcool Etílico",
+            color = "#C2C2C2",
+            state = "Liquid",
+            density = 0.789f
+        };
+
+        substanceManager.AddSolvent(newSolvent);
+        //Debug.Log("Solvente adicionado com sucesso!");
+    }
+
 }
 

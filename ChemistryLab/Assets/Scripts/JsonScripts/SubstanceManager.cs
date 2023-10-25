@@ -100,7 +100,7 @@ public class SubstanceManager : MonoBehaviour
         //Debug.Log("Solução: " + sol.GetSolutionName() + " " + "Id: " + sol.GetId() + ", Densidade: " + sol.GetDensity() + ", Cor: " + sol.GetColor() + ", Estado físico: " + sol.GetState() + ", Nome do solvente que está presente na reação: " + sol.GetSolvent().GetCompoundName() + ", Nome do composto quimico organico que está presente na reação: " + sol.GetCompound().GetCompoundName() + ", E o resultado da sua solução é: " + sol.GetSolubilityResult());
         //}*/
     }
-    
+
 
     public SubstanceSolvent ConvertDataToSubstanceSolvent(SolventData solventData)
     {
@@ -170,6 +170,14 @@ public class SubstanceManager : MonoBehaviour
 
     public void AddCompound(CompoundData newCompoundData)
     {
+        foreach (var compound in compoundsList)
+        {
+            if (compound.GetId() == newCompoundData.id)
+            {
+                Debug.LogError("Um composto com o mesmo ID já existe!");
+                return;
+            }
+        }
         string jsonTextComp = File.ReadAllText(compoundsJsonFilePath);
         compoundsCollection = JsonUtility.FromJson<CompoundsCollection>(jsonTextComp);
 
@@ -177,7 +185,7 @@ public class SubstanceManager : MonoBehaviour
         compoundsList.Add(ConvertDataToSubstanceCompound(newCompoundData));
 
         SaveCompounds();
-        Debug.Log(newCompoundData.compoundName + "Foi adicionado com sucesso!!!!");
+        //Debug.Log(newCompoundData.compoundName + "Foi adicionado com sucesso!");
 
     }
 
@@ -187,6 +195,28 @@ public class SubstanceManager : MonoBehaviour
         File.WriteAllText(compoundsJsonFilePath, jsonTextComp);
     }
 
+    public void AddSolvent(SolventData newSolvent)
+    {
+        foreach (var solvent in solventsList)
+        {
+            if (solvent.GetId() == newSolvent.id)
+            {
+                Debug.LogError("Um solvente com o mesmo ID já existe!");
+                return;
+            }
+        }
+
+        solventsCollection.solvents.Add(newSolvent);
+        solventsList.Add(ConvertDataToSubstanceSolvent(newSolvent));
+        SaveSolvents();
+        //Debug.Log(newSolvent.compoundName + "Foi adicionado com sucesso!");
+    }
+
+    void SaveSolvents()
+    {
+        string json = JsonUtility.ToJson(solventsCollection, true);
+        File.WriteAllText(solventsJsonFilePath, json);
+    }
 
     public SubstanceSolvent FindSolventByName(string name)
     {
