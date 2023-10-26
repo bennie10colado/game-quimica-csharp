@@ -58,10 +58,10 @@
         },
         {
             "id": 44444,
-            "compoundName": "Álcool Etílico",
-            "color": "#C2C2C2",
-            "state": "Liquid",
-            "density": 0.7889999747276306
+            "compoundName": "Água Oxigenada Atualizada",
+            "color": "RGBA(1.000, 1.000, 1.000, 1.000)",
+            "state": "LIQUID",
+            "density": 1.0
         }
     ]
 }

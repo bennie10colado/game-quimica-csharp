@@ -35,7 +35,7 @@ public class SubstanceManagerTest : MonoBehaviour
         // Testes de Atualização
         TestUpdateCompound();
         TestUpdateSolvent();
-        TestUpdateSolution();
+        //TestUpdateSolution();
     }
 
     void TestAddCompound()
@@ -174,13 +174,13 @@ public class SubstanceManagerTest : MonoBehaviour
     void TestUpdateSolvent()
     {
         Debug.Log("Atualizando Solvente...");
-        substanceManager.UpdateSolvent(444444, "Água Oxigenada Atualizada", "#FFFFFF", "Liquid", 1.0f);
+        substanceManager.UpdateSolvent(44444, "Água Oxigenada Atualizada", "#FFFFFF", "Liquid", 1.0f);
     }
 
     void TestUpdateSolution()
     {
         Debug.Log("Atualizando Solução...");
-        substanceManager.UpdateSolution(56, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Liquid", 0.5f, "Insoluble");
+        //substanceManager.UpdateSolution(56, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Liquid", 0.5f, "Insoluble");
     }
 
 }

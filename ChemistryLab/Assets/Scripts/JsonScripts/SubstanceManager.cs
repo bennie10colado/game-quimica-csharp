@@ -258,39 +258,62 @@ public class SubstanceManager : MonoBehaviour
 
     public SubstanceSolvent FindSolventByName(string name)
     {
-        return solventsList.Find(solvent => solvent.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
+        SubstanceSolvent solvent = solventsList.Find(s => s.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (solvent == null)
+        {
+            Debug.LogError($"Solvente com nome '{name}' não encontrado.");
+        }
+        return solvent;
     }
 
     public SubstanceSolvent FindSolventById(int id)
     {
-        foreach (var solvent in solventsList)
+        SubstanceSolvent solvent = solventsList.Find(s => s.GetId() == id);
+        if (solvent == null)
         {
-            if (solvent.GetId() == id)
-            {
-                return solvent;
-            }
+            Debug.LogError($"Solvente com ID {id} não encontrado.");
         }
-        return null;
+        return solvent;
     }
 
     public SubstanceCompound FindCompoundByName(string name)
     {
-        return compoundsList.Find(compound => compound.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
+        SubstanceCompound compound = compoundsList.Find(c => c.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (compound == null)
+        {
+            Debug.LogError($"Composto com nome '{name}' não encontrado.");
+        }
+        return compound;
     }
 
     public SubstanceCompound FindCompoundById(int id)
     {
-        return compoundsList.Find(compound => compound.GetId() == id);
+        SubstanceCompound compound = compoundsList.Find(c => c.GetId() == id);
+        if (compound == null)
+        {
+            Debug.LogError($"Composto com ID {id} não encontrado.");
+        }
+        return compound;
     }
 
     public SubstanceSolution FindSolutionByName(string name)
     {
-        return solutionsList.Find(solution => solution.GetSolutionName().Equals(name, StringComparison.OrdinalIgnoreCase));
+        SubstanceSolution solution = solutionsList.Find(s => s.GetSolutionName().Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (solution == null)
+        {
+            Debug.LogError($"Solução com nome '{name}' não encontrada.");
+        }
+        return solution;
     }
 
     public SubstanceSolution FindSolutionById(int id)
     {
-        return solutionsList.Find(solution => solution.GetId() == id);
+        SubstanceSolution solution = solutionsList.Find(s => s.GetId() == id);
+        if (solution == null)
+        {
+            Debug.LogError($"Solução com ID {id} não encontrada.");
+        }
+        return solution;
     }
 
     public void PrintAllSolvents()
@@ -363,12 +386,17 @@ public class SubstanceManager : MonoBehaviour
         GroupName parsedGroupName = ConvertToGroupName(groupName);
 
         SubstanceCompound compound = FindCompoundById(id);
+
         if (compound.GetCompoundName() != null)
         {
-            Debug.Log(compound.GetInfo());
-            compound.UpdateCompound(compound.GetId(), compoundName, parsedColor, physicalState, density, parsedGroupName);
+            Debug.Log("Antes da Atualização: " + compound.GetInfo());
+
+            compound.UpdateCompound(id, compoundName, parsedColor, physicalState, density, parsedGroupName);
+
+            UpdateCompoundInListAndFile(compound);
+
+            Debug.Log("Após a Atualização: " + compound.GetInfo());
             Debug.Log("Composto atualizado com sucesso!");
-            Debug.Log(compound.GetInfo());
         }
         else
         {
@@ -376,15 +404,43 @@ public class SubstanceManager : MonoBehaviour
         }
     }
 
-    public void UpdateSolvent(int id, string compoundName, string color, string state, float density)
+    private void UpdateCompoundInListAndFile(SubstanceCompound updatedCompound)
+    {
+        int index = compoundsList.FindIndex(c => c.GetId() == updatedCompound.GetId());
+        if (index != -1)
+        {
+            compoundsList[index] = updatedCompound;
+
+            int dataIndex = compoundsCollection.compounds.FindIndex(c => c.id == updatedCompound.GetId());
+            if (dataIndex != -1)
+            {
+                compoundsCollection.compounds[dataIndex] = updatedCompound.ToCompoundData();
+            }
+
+            SaveCompounds();
+        }
+        else
+        {
+            Debug.LogError("Erro ao atualizar: composto não encontrado na lista.");
+        }
+    }
+
+    public void UpdateSolvent(int id, string solventName, string color, string state, float density)
     {
         Color parsedColor = ConvertToColor(color);
         PhysicalState physicalState = ConvertToPhysicalState(state);
 
         SubstanceSolvent solvent = FindSolventById(id);
+        Debug.Log(solvent.GetCompoundName() + "aaaaaaaaaa");
         if (solvent.GetCompoundName() != null)
         {
-            solvent.UpdateSolvent(solvent.GetId(), compoundName, parsedColor, physicalState, density);
+            Debug.Log("Antes da Atualização: " + solvent.GetInfo());
+
+            solvent.UpdateSolvent(id, solventName, parsedColor, physicalState, density);
+
+            UpdateSolventInListAndFile(solvent);
+
+            Debug.Log("Após a Atualização: " + solvent.GetInfo());
             Debug.Log("Solvente atualizado com sucesso!");
         }
         else
@@ -393,22 +449,27 @@ public class SubstanceManager : MonoBehaviour
         }
     }
 
-    public void UpdateSolution(int id, int solventId, int compoundId, string solutionName, string color, string state, float density, string solubilityResult)
+    private void UpdateSolventInListAndFile(SubstanceSolvent updatedSolvent)
     {
-        Color parsedColor = ConvertToColor(color);
-        PhysicalState physicalState = ConvertToPhysicalState(state);
-        SolubilityResults solubility = ConvertToSolubilityResults(solubilityResult);
-
-        SubstanceSolution solution = FindSolutionById(id);
-        if (solution.GetSolutionName() != null)
+        int index = solventsList.FindIndex(s => s.GetId() == updatedSolvent.GetId());
+        if (index != -1)
         {
-            solution.UpdateSolution(solution.GetId(), solventId, compoundId, solutionName, parsedColor, physicalState, density, solubility);
-            Debug.Log("Solução atualizada com sucesso!");
+            solventsList[index] = updatedSolvent;
+
+            int dataIndex = solventsCollection.solvents.FindIndex(s => s.id == updatedSolvent.GetId());
+            if (dataIndex != -1)
+            {
+                solventsCollection.solvents[dataIndex] = updatedSolvent.ToSolventData();
+            }
+
+            SaveSolvents();
         }
         else
         {
-            Debug.LogError("Solução não encontrada!");
+            Debug.LogError("Erro ao atualizar: solvente não encontrado na lista.");
         }
     }
+
+
 
 }

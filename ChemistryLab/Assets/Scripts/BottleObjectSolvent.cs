@@ -19,7 +19,6 @@ public class BottleObjectSolvent : MonoBehaviour
         color = solvent.GetColor(); 
         density = solvent.GetDensity();
         state = solvent.GetState();
-        groupName = solvent.GetGroupName();
 
         if (myMaterial != null)
         {

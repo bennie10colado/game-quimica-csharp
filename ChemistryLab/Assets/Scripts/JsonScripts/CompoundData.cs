@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class CompoundData
@@ -12,3 +11,5 @@ public class CompoundData
     public string groupName;
     public float density;
 }
+
+

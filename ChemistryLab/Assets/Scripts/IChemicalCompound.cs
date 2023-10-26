@@ -8,5 +8,4 @@ public interface IChemicalCompound
     Color GetColor();
     PhysicalState GetState();
     float GetDensity();
-    GroupName GetGroupName();
 }
