@@ -132,13 +132,13 @@
         },
         {
             "id": 55555,
-            "solventId": 7,
-            "compoundId": 10,
-            "solutionName": "Solução Teste",
-            "color": "#FFFFFF",
-            "state": "Liquid",
-            "density": 1.0,
-            "solubilityResult": "Soluble"
+            "solventId": 444444,
+            "compoundId": 111111,
+            "solutionName": "Solução Atualizada",
+            "color": "RGBA(0.667, 0.667, 0.667, 1.000)",
+            "state": "LIQUID",
+            "density": 0.5,
+            "solubilityResult": "InsolubleAbove"
         }
     ]
 }
