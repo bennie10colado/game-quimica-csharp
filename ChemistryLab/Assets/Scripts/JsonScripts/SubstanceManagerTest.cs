@@ -36,6 +36,10 @@ public class SubstanceManagerTest : MonoBehaviour
         //TestUpdateCompound();
         //TestUpdateSolvent();
         //TestUpdateSolution();
+
+        TestDeleteCompound();
+        //TestDeleteSolvent();
+        //TestDeleteSolution();
     }
 
     void TestAddCompound()
@@ -183,5 +187,24 @@ public class SubstanceManagerTest : MonoBehaviour
         substanceManager.UpdateSolution(55555, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Liquid", 0.5f, "InsolubleAbove");
     }
 
+    void TestDeleteCompound()
+    {
+        int compoundId = 111111;
+        substanceManager.DeleteCompoundById(compoundId);
+    }
+
+    void TestDeleteSolvent()
+    {
+        int solventId = 44444;
+        substanceManager.DeleteSolventById(solventId);
+    }
+
+    void TestDeleteSolution()
+    {
+        int solutionId = 55555;
+        substanceManager.DeleteSolutionById(solutionId);
+    }
+
 }
+
 

@@ -79,14 +79,6 @@
             "state": "LIQUID",
             "groupName": "I",
             "density": 1.2999999523162842
-        },
-        {
-            "id": 111111,
-            "compoundName": "Composto Teste Atualizado",
-            "color": "RGBA(0.133, 0.133, 0.133, 1.000)",
-            "state": "SOLID",
-            "groupName": "S2",
-            "density": 2.0
         }
     ]
 }

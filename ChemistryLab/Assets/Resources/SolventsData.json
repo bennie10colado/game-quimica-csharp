@@ -55,13 +55,6 @@
             "color": "#FFFFFF",
             "state": "LIQUID",
             "density": 1.690000057220459
-        },
-        {
-            "id": 44444,
-            "compoundName": "Água Oxigenada Atualizada",
-            "color": "RGBA(1.000, 1.000, 1.000, 1.000)",
-            "state": "LIQUID",
-            "density": 1.0
         }
     ]
 }

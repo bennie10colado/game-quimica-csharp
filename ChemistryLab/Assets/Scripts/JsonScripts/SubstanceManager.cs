@@ -515,6 +515,64 @@ public class SubstanceManager : MonoBehaviour
         }
     }
 
+    public void DeleteCompoundById(int id)
+    {
+        int listIndex = compoundsList.FindIndex(c => c.GetId() == id);
+        int dataIndex = compoundsCollection.compounds.FindIndex(c => c.id == id);
+
+        if (listIndex != -1 && dataIndex != -1)
+        {
+            compoundsList.RemoveAt(listIndex);
+            compoundsCollection.compounds.RemoveAt(dataIndex);
+
+            SaveCompounds();
+
+            Debug.Log($"Composto com ID {id} excluído com sucesso.");
+        }
+        else
+        {
+            Debug.LogError($"Composto com ID {id} não encontrado.");
+        }
+    }
+
+    public void DeleteSolventById(int id)
+    {
+        int listIndex = solventsList.FindIndex(s => s.GetId() == id);
+        int dataIndex = solventsCollection.solvents.FindIndex(s => s.id == id);
+
+        if (listIndex != -1 && dataIndex != -1)
+        {
+            solventsList.RemoveAt(listIndex);
+            solventsCollection.solvents.RemoveAt(dataIndex);
+
+            SaveSolvents();
+
+            Debug.Log($"Solvente com ID {id} excluído com sucesso.");
+        }
+        else
+        {
+            Debug.LogError($"Solvente com ID {id} não encontrado.");
+        }
+    }
+    public void DeleteSolutionById(int id)
+    {
+        int listIndex = solutionsList.FindIndex(s => s.GetId() == id);
+        int dataIndex = solutionsCollection.solutions.FindIndex(s => s.id == id);
+
+        if (listIndex != -1 && dataIndex != -1)
+        {
+            solutionsList.RemoveAt(listIndex);
+            solutionsCollection.solutions.RemoveAt(dataIndex);
+
+            SaveSolubilities();
+
+            Debug.Log($"Solução com ID {id} excluída com sucesso.");
+        }
+        else
+        {
+            Debug.LogError($"Solução com ID {id} não encontrada.");
+        }
+    }
 
 
 }
