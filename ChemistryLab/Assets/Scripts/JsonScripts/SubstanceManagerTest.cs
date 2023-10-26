@@ -33,8 +33,8 @@ public class SubstanceManagerTest : MonoBehaviour
         //TestPrintAllSolutions();
 
         // Testes de Atualização
-        TestUpdateCompound();
-        TestUpdateSolvent();
+        //TestUpdateCompound();
+        //TestUpdateSolvent();
         //TestUpdateSolution();
     }
 
@@ -43,7 +43,7 @@ public class SubstanceManagerTest : MonoBehaviour
         CompoundData newCompound = new CompoundData
         {
             id = 111111,
-            compoundName = "Teste",
+            compoundName = "Composto Teste 1",
             color = "#111111",
             state = "Liquid",
             groupName = "S1",
@@ -58,7 +58,7 @@ public class SubstanceManagerTest : MonoBehaviour
         SolventData newSolvent = new SolventData
         {
             id = 44444,
-            compoundName = "Álcool Etílico",
+            compoundName = "Álcool Etílico teste 1",
             color = "#C2C2C2",
             state = "Liquid",
             density = 0.789f
@@ -74,7 +74,7 @@ public class SubstanceManagerTest : MonoBehaviour
             id = 55555,
             solventId = 7,
             compoundId = 10,
-            solutionName = "Solução Teste",
+            solutionName = "Solução Teste 1",
             color = "#FFFFFF",
             state = "Liquid",
             density = 1.0f,
@@ -180,7 +180,7 @@ public class SubstanceManagerTest : MonoBehaviour
     void TestUpdateSolution()
     {
         Debug.Log("Atualizando Solução...");
-        //substanceManager.UpdateSolution(56, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Liquid", 0.5f, "Insoluble");
+        substanceManager.UpdateSolution(55555, 444444, 111111, "Solução Atualizada", "#AAAAAA", "Liquid", 0.5f, "InsolubleAbove");
     }
 
 }

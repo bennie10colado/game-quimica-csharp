@@ -259,7 +259,7 @@ public class SubstanceManager : MonoBehaviour
     public SubstanceSolvent FindSolventByName(string name)
     {
         SubstanceSolvent solvent = solventsList.Find(s => s.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
-        if (solvent == null)
+        if (solvent.GetCompoundName() == null)
         {
             Debug.LogError($"Solvente com nome '{name}' não encontrado.");
         }
@@ -269,7 +269,7 @@ public class SubstanceManager : MonoBehaviour
     public SubstanceSolvent FindSolventById(int id)
     {
         SubstanceSolvent solvent = solventsList.Find(s => s.GetId() == id);
-        if (solvent == null)
+        if (solvent.GetCompoundName() == null)
         {
             Debug.LogError($"Solvente com ID {id} não encontrado.");
         }
@@ -279,7 +279,7 @@ public class SubstanceManager : MonoBehaviour
     public SubstanceCompound FindCompoundByName(string name)
     {
         SubstanceCompound compound = compoundsList.Find(c => c.GetCompoundName().Equals(name, StringComparison.OrdinalIgnoreCase));
-        if (compound == null)
+        if (compound.GetCompoundName() == null)
         {
             Debug.LogError($"Composto com nome '{name}' não encontrado.");
         }
@@ -289,7 +289,7 @@ public class SubstanceManager : MonoBehaviour
     public SubstanceCompound FindCompoundById(int id)
     {
         SubstanceCompound compound = compoundsList.Find(c => c.GetId() == id);
-        if (compound == null)
+        if (compound.GetCompoundName() == null)
         {
             Debug.LogError($"Composto com ID {id} não encontrado.");
         }
@@ -299,7 +299,7 @@ public class SubstanceManager : MonoBehaviour
     public SubstanceSolution FindSolutionByName(string name)
     {
         SubstanceSolution solution = solutionsList.Find(s => s.GetSolutionName().Equals(name, StringComparison.OrdinalIgnoreCase));
-        if (solution == null)
+        if (solution.GetSolutionName() == null)
         {
             Debug.LogError($"Solução com nome '{name}' não encontrada.");
         }
@@ -309,7 +309,7 @@ public class SubstanceManager : MonoBehaviour
     public SubstanceSolution FindSolutionById(int id)
     {
         SubstanceSolution solution = solutionsList.Find(s => s.GetId() == id);
-        if (solution == null)
+        if (solution.GetSolutionName() == null)
         {
             Debug.LogError($"Solução com ID {id} não encontrada.");
         }
@@ -467,6 +467,51 @@ public class SubstanceManager : MonoBehaviour
         else
         {
             Debug.LogError("Erro ao atualizar: solvente não encontrado na lista.");
+        }
+    }
+
+    public void UpdateSolution(int id, int solventId, int compoundId, string solutionName, string color, string state, float density, string solubilityResult)
+    {
+        Color parsedColor = ConvertToColor(color);
+        PhysicalState physicalState = ConvertToPhysicalState(state);
+        SolubilityResults parsedSolubilityResults = ConvertToSolubilityResults(solubilityResult);
+
+        SubstanceSolution solution = FindSolutionById(id);
+        if (solution.GetSolutionName() != null)
+        {
+            Debug.Log("Antes da Atualização: " + solution.GetInfo());
+
+            solution.UpdateSolution(id, solventId, compoundId, solutionName, parsedColor, physicalState, density, parsedSolubilityResults);
+
+            UpdateSolutionInListAndFile(solution);
+
+            Debug.Log("Após a Atualização: " + solution.GetInfo());
+            Debug.Log("Solução de solubilidade atualizada com sucesso!");
+        }
+        else
+        {
+            Debug.LogError("Solução de solubilidade não encontrada!");
+        }
+    }
+
+    private void UpdateSolutionInListAndFile(SubstanceSolution updatedSolution)
+    {
+        int index = solutionsList.FindIndex(s => s.GetId() == updatedSolution.GetId());
+        if (index != -1)
+        {
+            solutionsList[index] = updatedSolution;
+
+            int dataIndex = solutionsCollection.solutions.FindIndex(s => s.id == updatedSolution.GetId());
+            if (dataIndex != -1)
+            {
+                solutionsCollection.solutions[dataIndex] = updatedSolution.ToSolutionData();
+            }
+
+            SaveSolubilities();
+        }
+        else
+        {
+            Debug.LogError("Erro ao atualizar: solução de solubilidade não encontrada na lista.");
         }
     }
 
