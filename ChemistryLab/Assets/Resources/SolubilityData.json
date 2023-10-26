@@ -129,16 +129,6 @@
             "state": "LIQUID",
             "density": 1.2999999523162842,
             "solubilityResult": "InsolubleAbove"
-        },
-        {
-            "id": 55555,
-            "solventId": 444444,
-            "compoundId": 111111,
-            "solutionName": "Solução Atualizada",
-            "color": "RGBA(0.667, 0.667, 0.667, 1.000)",
-            "state": "LIQUID",
-            "density": 0.5,
-            "solubilityResult": "InsolubleAbove"
         }
     ]
 }
