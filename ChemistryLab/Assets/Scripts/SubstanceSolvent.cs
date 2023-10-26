@@ -7,7 +7,6 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
     private string compoundName;
     private Color color;
     private PhysicalState state;
-    private GroupName groupName;
     private float density;
 
     public SubstanceSolvent(int id, string compoundName, Color color, PhysicalState state, float density)
@@ -17,7 +16,6 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
         this.color = color;
         this.state = state;
         this.density = density;
-        this.groupName = GroupName.Solvent;
     }
     public int GetId()
     {
@@ -43,14 +41,9 @@ public class SubstanceSolvent : MonoBehaviour, IChemicalCompound
         return density;
     }
 
-    public GroupName GetGroupName()
-    {
-        return groupName;
-    }
-
     public string GetInfo()
     {
-        return $"ID: {GetId()}, Nome: {GetCompoundName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}, Grupo: {GetGroupName()}";
+        return $"ID: {GetId()}, Nome: {GetCompoundName()}, Cor: {GetColor()}, Estado: {GetState()}, Densidade: {GetDensity()}";
     }
 
     public void UpdateSolvent(int id, string name, Color color, PhysicalState state, float density)
